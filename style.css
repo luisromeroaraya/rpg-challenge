@@ -1,0 +1,30 @@
+* {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100vh;
+    width: 100vw;
+    background: black;
+}
+
+header img {
+    display: block;
+    padding: 10px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body {
+    height: calc(100% - 20px);
+    width: calc(100% - 20px);
+    margin: auto;
+    background-image: url(/rpg-challenge/assets/background-day.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border: solid white 10px;    
+}
