@@ -1,4 +1,7 @@
 # Challenge: [RPG Challenge](https://github.com/becodeorg/BXL-Swartz-4-27/tree/master/2.The-Hill/1.Javascript/rpg-project)
+
+## Link to [my game](https://luisromeroaraya.github.io/rpg-challenge/)
+
  **Challenge Parameters**	| **Challenge Details**
 --------------------------|-----------------------
  Repository	| `js-rpg`
