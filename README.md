@@ -15,7 +15,7 @@
 1. Prepare to present the game to the group. (No powerpoints.)
 
 <p><a href="https://www.youtube.com/watch?v=Y4-I0FuG4LM&amp;feature=youtu.be
-" rel="nofollow"><img src="/becodeorg/BXL-Swartz-4-27/raw/master/2.The-Hill/1.Javascript/rpg-project/resources/becodiante.jpg" alt="Becodiante the great" width="40%" style="max-width:100%;"></a></p>
+" rel="nofollow"><img src="https://github.com/becodeorg/BXL-Swartz-4-27/raw/master/2.The-Hill/1.Javascript/rpg-project/resources/becodiante.jpg" alt="Becodiante the great" width="40%" style="max-width:100%;"></a></p>
 
 ## Welcome adventurer, monster or whatever you are.
 We are reaching the end of the JavaScript course, but no worries: it does not end here. There are so many things to discover, so many things to touch. Don't let it scare you because it is so much fun in the end!
