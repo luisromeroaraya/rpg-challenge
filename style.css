@@ -150,11 +150,13 @@ main {
     cursor: pointer;
 }
 
-#battleLog {
+#logContainer {
+    height: 100%;
     width: 80%;
     grid-column: 1;
     grid-row: 2 / 3;
-    background: rgba(255, 255, 255, 0.3)
+    background: rgba(255, 255, 255, 0.3);
+    overflow-y: auto;
 }
 
 footer {
