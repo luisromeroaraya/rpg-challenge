@@ -8,12 +8,57 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <img src="assets/logo.png" alt="logo">
-    </header>    
-
-
-
-
+    <header id=header>
+        <img id=headerLogo src="assets/logo.png" alt="Logo">
+        <h1 id=headerTitle style="display: none">Wacken Open Air Metal Battle</h1>
+    </header>
+    <main id=mainContainer class=container>                
+        <section id=battleCharacters class=container>
+            <section id=firstCharacter class=container>
+                <section id=firstNameContainer class=container>
+                    <h2 id=firstName>First Name</h2>
+                </section>
+                <section id=firstHPContainer class=container>
+                    <label for="firstHP">HP:</label>
+                    <progress id="firstHPbar" value="100" max="100">100/100</progress>
+                </section>
+                <section id=firstPhotoContainer class=container>
+                    <img id=firstPhoto src="assets/satyricon - frost - attack.jpg" alt="First Character Photo">
+                </section>
+                <section id=firstButtonsContainer class=container>
+                    <button id=firstAttack class=buttons type=button>Attack</button>
+                    <button id=firstHeal class=buttons type=button>Heal</button>
+                    <button id=firstYield class=buttons type=button>Yield</button>
+                </section>
+            </section>
+            <section id=versus class=container>
+                <img id=versusLogo src="assets/versus.png" alt="Versus">
+            </section>
+            <section id=secondCharacter class=container>
+                <section id=secondNameContainer class=container>
+                    <h2 id=secondName>Second Name</h2>
+                </section>
+                <section id=secondHPContainer class=container>
+                    <label for="secondHP">HP:</label>
+                    <progress id="secondHPbar" value="100" max="100">100/100</progress>
+                </section>
+                <section id=secondPhotoContainer class=container>
+                    <img id=secondPhoto src="assets/abbath-attack.jpg" alt="Second Character Photo">
+                </section>
+                <section id=secondButtonsContainer class=container>
+                    <button id=secondAttack class=buttons type=button>Attack</button>
+                    <button id=secondHeal class=buttons type=button>Heal</button>
+                    <button id=secondYield class=buttons type=button>Yield</button>
+                </section>
+            </section>
+        </section>
+        <section id=battleLog class=container>
+            <h2>Battle Log</h2>
+            <p id=log> Log</p>
+        </section>
+    </main>
+    <footer>
+        <p>RPG Challenge 2021 © Marcelo Romero-Cors</p>
+    </footer>
 </body>
 </html>
