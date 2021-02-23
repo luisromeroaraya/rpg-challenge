@@ -130,11 +130,6 @@ main {
     place-self: center;
 }
 
-#secondPhoto {
-    height: 100%;
-    width:auto;
-}
-
 #secondButtonContainer {
     grid-column: 1;
     grid-row: 4 / 5;
