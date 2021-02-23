@@ -42,7 +42,7 @@ Don't worry I shall guide you and help you on your way.
 ## The stats
 <details>
 <summary>Game example (It does not have to look like this!).</summary>
-<p><a target="_blank" rel="noopener noreferrer" href="/becodeorg/BXL-Swartz-4-27/blob/master/2.The-Hill/1.Javascript/rpg-project/resources/Image1.jpg"><img src="/becodeorg/BXL-Swartz-4-27/raw/master/2.The-Hill/1.Javascript/rpg-project/resources/Image1.jpg" alt="" style="max-width:100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/becodeorg/BXL-Swartz-4-27/raw/master/2.The-Hill/1.Javascript/rpg-project/resources/Image1.jpg"><img src="https://github.com/becodeorg/BXL-Swartz-4-27/raw/master/2.The-Hill/1.Javascript/rpg-project/resources/Image1.jpg" alt="" style="max-width:100%;"></a></p>
 </details>
 Each calculation should run for one attack. For instance, if I have a bow and decide to attack. I might get lucky and strike twice. If the opponent wears boots, he could dodge the attack twice, once or never.
 
@@ -93,7 +93,7 @@ Create an HTML page with the following elements included:
 <details>
 <summary>Finished?</summary>
 Great! Now proceed.
-![Proceed](https://camo.githubusercontent.com/5e82b81c57cb33f325c970cfff08cacd3244c2ea473804795bc2924083952ac9/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f327753434738586631734c6c7779417755562f67697068792e676966)
+<p><a target="_blank" rel="noopener noreferrer" href="https://camo.githubusercontent.com/5e82b81c57cb33f325c970cfff08cacd3244c2ea473804795bc2924083952ac9/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f327753434738586631734c6c7779417755562f67697068792e676966"><img src="https://camo.githubusercontent.com/5e82b81c57cb33f325c970cfff08cacd3244c2ea473804795bc2924083952ac9/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f327753434738586631734c6c7779417755562f67697068792e676966" alt="" data-canonical-src="https://media.giphy.com/media/2wSCG8Xf1sLlwyAwUV/giphy.gif" style="max-width:100%;"></a></p>
 </details>
 </details>
 
@@ -132,7 +132,7 @@ Great! Now proceed.
 <details>
 <summary>Finished?</summary>
 Great! Now proceed.
-![Proceed](https://camo.githubusercontent.com/5e82b81c57cb33f325c970cfff08cacd3244c2ea473804795bc2924083952ac9/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f327753434738586631734c6c7779417755562f67697068792e676966)
+<p><a target="_blank" rel="noopener noreferrer" href="https://camo.githubusercontent.com/5e82b81c57cb33f325c970cfff08cacd3244c2ea473804795bc2924083952ac9/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f327753434738586631734c6c7779417755562f67697068792e676966"><img src="https://camo.githubusercontent.com/5e82b81c57cb33f325c970cfff08cacd3244c2ea473804795bc2924083952ac9/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f327753434738586631734c6c7779417755562f67697068792e676966" alt="" data-canonical-src="https://media.giphy.com/media/2wSCG8Xf1sLlwyAwUV/giphy.gif" style="max-width:100%;"></a></p>
 </details>
 </details>
 
@@ -153,7 +153,7 @@ Here is a list of what you should work out:
 
 <details>
 <summary>Well done! Now challenge people!</summary>
-![Challenge](https://camo.githubusercontent.com/ca78cd41b68bfdf2fc2d47140e0d0604ef148488c9618e2d59d76d430f774541/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f726a735a6649725830424734452f67697068792e676966)
+<p><a target="_blank" rel="noopener noreferrer" href="https://camo.githubusercontent.com/ca78cd41b68bfdf2fc2d47140e0d0604ef148488c9618e2d59d76d430f774541/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f726a735a6649725830424734452f67697068792e676966"><img src="https://camo.githubusercontent.com/ca78cd41b68bfdf2fc2d47140e0d0604ef148488c9618e2d59d76d430f774541/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f726a735a6649725830424734452f67697068792e676966" alt="" data-canonical-src="https://media.giphy.com/media/rjsZfIrX0BG4E/giphy.gif" style="max-width:100%;"></a></p>
 </details>
 
 ## Goals
