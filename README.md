@@ -36,13 +36,13 @@ You and your colleague have to program a game where you can battle each other. T
 Don't worry I shall guide you and help you on your way.
 
 <details>
-![Magic](https://camo.githubusercontent.com/9d4b48f9b5cf54d57f485a8d1eaa1810da3db826af2841a5105737c1bf43c1c8/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f6c6f5269744e50794362654b6e74544670322f67697068792e676966)
+<a target="_blank" rel="noopener noreferrer" href="https://camo.githubusercontent.com/9d4b48f9b5cf54d57f485a8d1eaa1810da3db826af2841a5105737c1bf43c1c8/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f6c6f5269744e50794362654b6e74544670322f67697068792e676966"><img src="https://camo.githubusercontent.com/9d4b48f9b5cf54d57f485a8d1eaa1810da3db826af2841a5105737c1bf43c1c8/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f6c6f5269744e50794362654b6e74544670322f67697068792e676966" alt="" data-canonical-src="https://media.giphy.com/media/loRitNPyCbeKntTFp2/giphy.gif" style="max-width:100%;"></a>
 </details>
 
 ## The stats
 <details>
 <summary>Game example (It does not have to look like this!).</summary>
-![Game](https://github.com/becodeorg/BXL-Swartz-4-27/raw/master/2.The-Hill/1.Javascript/rpg-project/resources/Image1.jpg)
+<p><a target="_blank" rel="noopener noreferrer" href="/becodeorg/BXL-Swartz-4-27/blob/master/2.The-Hill/1.Javascript/rpg-project/resources/Image1.jpg"><img src="/becodeorg/BXL-Swartz-4-27/raw/master/2.The-Hill/1.Javascript/rpg-project/resources/Image1.jpg" alt="" style="max-width:100%;"></a></p>
 </details>
 Each calculation should run for one attack. For instance, if I have a bow and decide to attack. I might get lucky and strike twice. If the opponent wears boots, he could dodge the attack twice, once or never.
 
@@ -64,6 +64,7 @@ Journey 1 will have more visual related challenges, journey 2 will have more gam
 ## Journey 1 - Player 1
 <details>
 <summary>Starts here!</summary>
+ 
 ### Challenge 1:
 
 Create an HTML page with the following elements included:
