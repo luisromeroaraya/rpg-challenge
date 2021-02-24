@@ -43,14 +43,14 @@ header {
     grid-row: 1;
 }
 
-#firstChoose {
+#heroChoose {
     grid-column: 1;
     grid-row: 1;
     justify-self: left;
     align-self: center;
 }
 
-#secondChoose {
+#enemyChoose {
     grid-column: 3;
     grid-row: 1;
     justify-self: right;
@@ -80,7 +80,7 @@ main {
     justify-items: center;
 }
 
-#firstCharacter {
+#heroCharacter {
     grid-column: 1 / 2;
     grid-row: 1;
     display: grid;
@@ -99,7 +99,7 @@ main {
     width: auto;
 }
 
-#secondCharacter {
+#enemyCharacter {
     grid-column: 3 / 4;
     grid-row: 1;
     display: grid;
@@ -108,82 +108,82 @@ main {
     justify-items: center;
 }
 
-#firstNameContainer {
+#heroNameContainer {
     grid-column: 1;
     grid-row: 1;
     justify-self: left;
     align-self: center;
 }
 
-#firstRaceContainer {
+#heroRaceContainer {
     grid-column: 1;
     grid-row: 2;
     justify-self: left;
     align-self: center;
 }
 
-#firstItemContainer {
+#heroItemContainer {
     grid-column: 1;
     grid-row: 3;
     justify-self: left;
     align-self: center;
 }
 
-#firstHPContainer {
+#heroHPContainer {
     grid-column: 1;
     grid-row: 4;
     justify-self: left;
     align-self: center;
 }
 
-#firstPhotoContainer {
+#heroPhotoContainer {
     grid-column: 1;
     grid-row: 5;
     place-self: center;
 }
 
-#firstButtonContainer {
+#heroButtonContainer {
     grid-column: 1;
     grid-row: 6;
     justify-items: center;
     place-self: center;
 }
 
-#secondNameContainer {
+#enemyNameContainer {
     grid-column: 1;
     grid-row: 1;
     justify-self: left;
     align-self: center;
 }
 
-#secondRaceContainer {
+#enemyRaceContainer {
     grid-column: 1;
     grid-row: 2;
     justify-self: left;
     align-self: center;
 }
 
-#secondItemContainer {
+#enemyItemContainer {
     grid-column: 1;
     grid-row: 3;
     justify-self: left;
     align-self: center;
 }
 
-#secondHPContainer {
+#enemyHPContainer {
     grid-column: 1;
     grid-row: 4;
     justify-self: left;
     align-self: center;
 }
 
-#secondPhotoContainer {
+#enemyPhotoContainer {
     grid-column: 1;
     grid-row: 5;
     place-self: center;
 }
 
-#secondButtonContainer {
+#enemyButtonContainer {
     grid-column: 1;
     grid-row: 6;
     justify-items: center;

@@ -13,10 +13,10 @@
         <div class="modal-content">
                 <h1 id=Title>Wacken Open Air Metal Battle</h1>
                 <h2>Choose your fighter!</h2>
-                <label for="firstName">Enter your name:</label>
-                <input type="text" id="firstName" name="firstName" required><br>
-                <label for="firstRace">Choose your race:</label>
-                <select id="firstRace" name="firstRace" required>
+                <label for="heroName">Enter your name:</label>
+                <input type="text" id="heroName" name="heroName" required><br>
+                <label for="heroRace">Choose your race:</label>
+                <select id="heroRace" name="heroRace" required>
                     <option value=""></option>
                     <option value="Human">Human (20% less damage taken)</option>
                     <option value="Orc">Orc (40% more max health)</option>
@@ -24,8 +24,8 @@
                     <option value="Vampire">Vampire (10% lifesteal at vampire's turn)</option>
                 </select>
                 <br>
-                <label for="firstItem">Choose your special item:</label>
-                <select id="firstItem" name="firstItem" required>
+                <label for="heroItem">Choose your special item:</label>
+                <select id="heroItem" name="heroItem" required>
                     <option value=""></option>
                     <option value="Boots">Boots (30% chance to dodge an attack)</option>
                     <option value="Staff">Staff (20% increase in healing)</option>
@@ -41,8 +41,8 @@
         <div class="modal-content">
                 <h1 id=Title>Wacken Open Air Metal Battle</h1>
                 <h2>Change your opposant!</h2>
-                <label for="secondName">Choose your enemy:</label>
-                <select id="secondName" name="secondName" onchange="changeEnemy()" required>
+                <label for="enemyName">Choose your enemy:</label>
+                <select id="enemyName" name="enemyName" onchange="changeEnemy()" required>
                     <option value=""></option>
                     <option value="Varg Vikernes">Varg Vikernes</option>
                     <option value="Abbath">Abbath</option>
@@ -50,8 +50,8 @@
                     <option value="Frost">Frost</option>
                 </select>
                 <br>
-                <label for="secondRace">Choose your race:</label>
-                <select id="secondRace" name="firstRace" disabled>
+                <label for="enemyRace">Choose your race:</label>
+                <select id="enemyRace" name="heroRace" disabled>
                     <option value=""></option>
                     <option value="Human">Human (20% less damage taken)</option>
                     <option value="Orc">Orc (40% more max health)</option>
@@ -59,8 +59,8 @@
                     <option value="Vampire">Vampire (10% lifesteal at vampire's turn)</option>
                 </select>
                 <br>
-                <label for="secondItem">Choose your special item:</label>
-                <select id="secondItem" name="firstItem" disabled>
+                <label for="enemyItem">Choose your special item:</label>
+                <select id="enemyItem" name="heroItem" disabled>
                     <option value=""></option>
                     <option value="Boots">Boots (30% chance to dodge an attack)</option>
                     <option value="Staff">Staff (20% increase in healing)</option>
@@ -73,59 +73,59 @@
     </div>
     
     <header id=header>
-        <button id=firstChoose class=buttons type=button>Change your Hero</button>
+        <button id=heroChoose class=buttons type=button>Change your Hero</button>
         <img id=headerLogo src="assets/logo.png" alt="Logo">
-        <button id=secondChoose class=buttons type=button>Choose your Enemy</button>
+        <button id=enemyChoose class=buttons type=button>Choose your Enemy</button>
     </header>
     <main id=mainContainer class=container>                
         <section id=battleCharacters class=container>
-            <section id=firstCharacter class=container>
-                <section id=firstNameContainer class=container>
-                    <h2 id=firstNameDisplay>Your name</h2>
+            <section id=heroCharacter class=container>
+                <section id=heroNameContainer class=container>
+                    <h2 id=heroNameDisplay>Your name</h2>
                 </section>
-                <section id=firstRaceContainer class=container>
-                    <p id=firstRaceDisplay>Your race</p>
+                <section id=heroRaceContainer class=container>
+                    <p id=heroRaceDisplay>Your race</p>
                 </section>
-                <section id=firstItemContainer class=container>
-                    <p id=firstItemDisplay>Your item</p>
+                <section id=heroItemContainer class=container>
+                    <p id=heroItemDisplay>Your item</p>
                 </section>
-                <section id=firstHPContainer class=container>
-                    <label id=firstHPDisplay for=firstHP>HP: 100/100</label>
-                    <progress id="firstHP" value="100" max="100"></progress>
+                <section id=heroHPContainer class=container>
+                    <label id=heroHPDisplay for=heroHP>HP: 100/100</label>
+                    <progress id="heroHP" value="100" max="100"></progress>
                 </section>
-                <section id=firstPhotoContainer class=container>
-                    <img id=firstPhoto src="assets/hero-sword-dio.jpg" alt="Hero Photo">
+                <section id=heroPhotoContainer class=container>
+                    <img id=heroPhoto src="assets/hero-sword-dio.jpg" alt="Hero Photo">
                 </section>
-                <section id=firstButtonsContainer class=container>
-                    <button id=firstAttack class=buttons type=button>Attack</button>
-                    <button id=firstHeal class=buttons type=button>Heal</button>
-                    <button id=firstYield class=buttons type=button>Yield</button>
+                <section id=heroButtonsContainer class=container>
+                    <button id=heroAttack class=buttons type=button>Attack</button>
+                    <button id=heroHeal class=buttons type=button>Heal</button>
+                    <button id=heroYield class=buttons type=button>Yield</button>
                 </section>
             </section>
             <section id=versus class=container>
                 <img id=versusLogo src="assets/versus.png" alt="Versus">
             </section>
-            <section id=secondCharacter class=container>
-                <section id=secondNameContainer class=container>
-                    <h2 id=secondNameDisplay>Enemy</h2>
+            <section id=enemyCharacter class=container>
+                <section id=enemyNameContainer class=container>
+                    <h2 id=enemyNameDisplay>Enemy</h2>
                 </section>
-                <section id=secondRaceContainer class=container>
-                    <p id=secondRaceDisplay>Race:</p>
+                <section id=enemyRaceContainer class=container>
+                    <p id=enemyRaceDisplay>Race:</p>
                 </section>
-                <section id=secondItemContainer class=container>
-                    <p id=secondItemDisplay>Special item:</p>
+                <section id=enemyItemContainer class=container>
+                    <p id=enemyItemDisplay>Special item:</p>
                 </section>
-                <section id=secondHPContainer class=container>
-                    <label id=secondHPDisplay for=secondHP>HP: 100/100</label>
-                    <progress id=secondHP value="100" max="100"></progress>
+                <section id=enemyHPContainer class=container>
+                    <label id=enemyHPDisplay for=enemyHP>HP: 100/100</label>
+                    <progress id=enemyHP value="100" max="100"></progress>
                 </section>
-                <section id=secondPhotoContainer class=container>
-                    <img id=secondPhoto src="assets/enemy-abbath-orc-rest.jpg" alt="Enemy Photo">
+                <section id=enemyPhotoContainer class=container>
+                    <img id=enemyPhoto src="assets/enemy-abbath-orc-rest.jpg" alt="Enemy Photo">
                 </section>
-                <section id=secondButtonsContainer class=container>
-                    <button id=secondAttack class=buttons type=button>Attack</button>
-                    <button id=secondHeal class=buttons type=button>Heal</button>
-                    <button id=secondYield class=buttons type=button>Yield</button>
+                <section id=enemyButtonsContainer class=container>
+                    <button id=enemyAttack class=buttons type=button>Attack</button>
+                    <button id=enemyHeal class=buttons type=button>Heal</button>
+                    <button id=enemyYield class=buttons type=button>Yield</button>
                 </section>
             </section>
         </section>

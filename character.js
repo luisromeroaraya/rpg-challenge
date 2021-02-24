@@ -1,46 +1,46 @@
-var firstName = "Frost";
-var firstRace = "Vampire";
-var firstItem = "Sword";
-var secondName = "Abbath";
-var secondRace = "Orc";
-var secondItem = "Axe";
+var heroName = "Frost";
+var heroRace = "Vampire";
+var heroItem = "Sword";
+var enemyName = "Abbath";
+var enemyRace = "Orc";
+var enemyItem = "Axe";
 
 var log = document.getElementById("log");
 var logtxt = "Just another day at Wacken Open Air.";
 log.innerHTML = logtxt;
 
-document.getElementById("firstAttack").addEventListener("click", () => {
-    logtxt = logtxt + ("<br>" + firstName + " attacks " + secondName + ".");
+document.getElementById("heroAttack").addEventListener("click", () => {
+    logtxt = logtxt + ("<br>" + heroName + " attacks " + enemyName + ".");
     log.innerHTML = logtxt;
     document.getElementById("logContainer").scrollTop = 9999999;
 });
 
-document.getElementById("secondAttack").addEventListener("click", () => {
-    logtxt = logtxt + ("<br>" + secondName + " attacks " + firstName + ".");
+document.getElementById("enemyAttack").addEventListener("click", () => {
+    logtxt = logtxt + ("<br>" + enemyName + " attacks " + heroName + ".");
     log.innerHTML = logtxt;
     document.getElementById("logContainer").scrollTop = 9999999;
 });
 
-document.getElementById("firstHeal").addEventListener("click", () => {
-    logtxt = logtxt + ("<br>" + firstName + " heals himself.");
+document.getElementById("heroHeal").addEventListener("click", () => {
+    logtxt = logtxt + ("<br>" + heroName + " heals himself.");
     log.innerHTML = logtxt;
     document.getElementById("logContainer").scrollTop = 9999999;
 });
 
-document.getElementById("secondHeal").addEventListener("click", () => {
-    logtxt = logtxt + ("<br>" + secondName + " heals himself.");
+document.getElementById("enemyHeal").addEventListener("click", () => {
+    logtxt = logtxt + ("<br>" + enemyName + " heals himself.");
     log.innerHTML = logtxt;
     document.getElementById("logContainer").scrollTop = 9999999;
 });
 
-document.getElementById("firstYield").addEventListener("click", () => {
-    logtxt = logtxt + ("<br>" + firstName + " surrenders.");
+document.getElementById("heroYield").addEventListener("click", () => {
+    logtxt = logtxt + ("<br>" + heroName + " surrenders.");
     log.innerHTML = logtxt;
     document.getElementById("logContainer").scrollTop = 9999999;
 });
 
-document.getElementById("secondYield").addEventListener("click", () => {
-    logtxt = logtxt + ("<br>" + secondName + " surrenders.");
+document.getElementById("enemyYield").addEventListener("click", () => {
+    logtxt = logtxt + ("<br>" + enemyName + " surrenders.");
     log.innerHTML = logtxt;
     document.getElementById("logContainer").scrollTop = 9999999;
 });
@@ -54,23 +54,23 @@ window.onload = function() {
    modalHero.style.display = "block";
 }
 
-document.getElementById("firstChoose").addEventListener("click", () => {
+document.getElementById("heroChoose").addEventListener("click", () => {
     modalHero.style.display = "block";
 });
 
 document.getElementById("fightHero").onclick = function() {
-    firstName = document.getElementById("firstName").value;
-    firstRace = document.getElementById("firstRace").value;
-    firstItem = document.getElementById("firstItem").value;
-    document.getElementById("firstNameDisplay").innerHTML = "Hero: " + firstName;
-    document.getElementById("firstRaceDisplay").innerHTML = "Race: " + firstRace;
-    document.getElementById("firstItemDisplay").innerHTML = "Special item: "+ firstItem;
-    document.getElementById("secondNameDisplay").innerHTML = "Enemy: " + secondName;
-    document.getElementById("secondRaceDisplay").innerHTML = "Race: " + secondRace;
-    document.getElementById("secondItemDisplay").innerHTML = "Special item: " + secondItem;
+    heroName = document.getElementById("heroName").value;
+    heroRace = document.getElementById("heroRace").value;
+    heroItem = document.getElementById("heroItem").value;
+    document.getElementById("heroNameDisplay").innerHTML = "Hero: " + heroName;
+    document.getElementById("heroRaceDisplay").innerHTML = "Race: " + heroRace;
+    document.getElementById("heroItemDisplay").innerHTML = "Special item: "+ heroItem;
+    document.getElementById("enemyNameDisplay").innerHTML = "Enemy: " + enemyName;
+    document.getElementById("enemyRaceDisplay").innerHTML = "Race: " + enemyRace;
+    document.getElementById("enemyItemDisplay").innerHTML = "Special item: " + enemyItem;
     logtxt = "Just another day at Wacken Open Air.";
     log.innerHTML = logtxt;
-    logtxt = logtxt + ("<br>" + firstName + " the " + firstRace + " will fight " + secondName + " the " + secondRace + "!");
+    logtxt = logtxt + ("<br>" + heroName + " the " + heroRace + " will fight " + enemyName + " the " + enemyRace + "!");
     log.innerHTML = logtxt;
     document.getElementById("logContainer").scrollTop = 9999999;
     modalHero.style.display = "none";
@@ -78,46 +78,46 @@ document.getElementById("fightHero").onclick = function() {
 
  var modalEnemy = document.getElementById("modalEnemy");
 
- document.getElementById("secondChoose").addEventListener("click", () => {
+ document.getElementById("enemyChoose").addEventListener("click", () => {
     modalEnemy.style.display = "block";
 });
 
 document.getElementById("fightEnemy").onclick = function() {
-    secondName = document.getElementById("secondName").value;
-    secondRace = document.getElementById("secondRace").value;
-    secondItem = document.getElementById("secondItem").value;
-    document.getElementById("secondNameDisplay").innerHTML = "Enemy: " + secondName;
-    document.getElementById("secondRaceDisplay").innerHTML = "Race: " + secondRace;
-    document.getElementById("secondItemDisplay").innerHTML = "Special item: " + secondItem;
+    enemyName = document.getElementById("enemyName").value;
+    enemyRace = document.getElementById("enemyRace").value;
+    enemyItem = document.getElementById("enemyItem").value;
+    document.getElementById("enemyNameDisplay").innerHTML = "Enemy: " + enemyName;
+    document.getElementById("enemyRaceDisplay").innerHTML = "Race: " + enemyRace;
+    document.getElementById("enemyItemDisplay").innerHTML = "Special item: " + enemyItem;
     logtxt = "Just another day at Wacken Open Air.";
     log.innerHTML = logtxt;
-    logtxt = logtxt + ("<br>" + firstName + " the " + firstRace + " will fight " + secondName + " the " + secondRace + "!");
+    logtxt = logtxt + ("<br>" + heroName + " the " + heroRace + " will fight " + enemyName + " the " + enemyRace + "!");
     log.innerHTML = logtxt;
     document.getElementById("logContainer").scrollTop = 9999999;
     modalEnemy.style.display = "none";
  }
 
 changeEnemy = () => {
-    switch(document.getElementById("secondName").value) {
+    switch(document.getElementById("enemyName").value) {
         case "Varg Vikernes":
-            document.getElementById("secondRace").value = "Human";
-            document.getElementById("secondItem").value = "Staff";
-            document.getElementById("secondPhoto").src = "assets/enemy-varg-human-rest.jpg";
+            document.getElementById("enemyRace").value = "Human";
+            document.getElementById("enemyItem").value = "Staff";
+            document.getElementById("enemyPhoto").src = "assets/enemy-varg-human-rest.jpg";
             break;
         case "Abbath":
-            document.getElementById("secondRace").value = "Orc";
-            document.getElementById("secondItem").value = "Sword";
-            document.getElementById("secondPhoto").src = "assets/enemy-abbath-orc-rest.jpg";
+            document.getElementById("enemyRace").value = "Orc";
+            document.getElementById("enemyItem").value = "Sword";
+            document.getElementById("enemyPhoto").src = "assets/enemy-abbath-orc-rest.jpg";
             break;
             case "Aerendir":
-            document.getElementById("secondRace").value = "Elf";
-            document.getElementById("secondItem").value = "Bow";
-            document.getElementById("secondPhoto").src = "assets/enemy-aerendir-elf-rest.jpg";
+            document.getElementById("enemyRace").value = "Elf";
+            document.getElementById("enemyItem").value = "Bow";
+            document.getElementById("enemyPhoto").src = "assets/enemy-aerendir-elf-rest.jpg";
             break;
         case "Frost":
-            document.getElementById("secondRace").value = "Vampire";
-            document.getElementById("secondItem").value = "Boots";
-            document.getElementById("secondPhoto").src = "assets/enemy-frost-vampire-rest.jpg";
+            document.getElementById("enemyRace").value = "Vampire";
+            document.getElementById("enemyItem").value = "Boots";
+            document.getElementById("enemyPhoto").src = "assets/enemy-frost-vampire-rest.jpg";
             break;
       }
 }
