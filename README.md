@@ -71,23 +71,23 @@ Journey 1 will have more visual related challenges, journey 2 will have more gam
 ### Challenge 1:
 
 Create an HTML page with the following elements included:
-- [ ] A title.
-- [ ] An element to display both characters stats (visual, name, item, health...). [Something like a VS screen.](https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/2050964/910/607/m1/fpnw/wm0/sample8-.jpg?1482262310&s=b524ce6f06ee59486cfa7ffa7a78ad99)
-- [ ] A panel with 6 buttons, 3 for each player (hit, heal & yield. Those are the moves.)
-- [ ]  A creation panel with inputs & dropdowns to create your character. (For now only name, items and race )
-- [ ]  A log that will tell you which move the player made.
+- [x] A title.
+- [x] An element to display both characters stats (visual, name, item, health...). [Something like a VS screen.](https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/2050964/910/607/m1/fpnw/wm0/sample8-.jpg?1482262310&s=b524ce6f06ee59486cfa7ffa7a78ad99)
+- [x] A panel with 6 buttons, 3 for each player (hit, heal & yield. Those are the moves.)
+- [x]  A creation panel with inputs & dropdowns to create your character. (For now only name, items and race )
+- [x]  A log that will tell you which move the player made.
  
 ### Challenge 2:
 
-- [ ] Use the character.js file and save the inputs inside variables/an object, and use them to initiate new characters for both players.
+- [x] Use the character.js file and save the inputs inside variables/an object, and use them to initiate new characters for both players.
 
 ### Challenge 3:
 
-- [ ] Make sure that only the title, VS screen and the input field are visible when creating the characters.
+- [x] Make sure that only the title, VS screen and the input field are visible when creating the characters.
 
 ### Challenge 4
 
-- [ ] When the characters are created, the creation panel should disappear. After this, the moves & log panel should appear.
+- [x] When the characters are created, the creation panel should disappear. After this, the moves & log panel should appear.
 
 ### Challenge 5
 
