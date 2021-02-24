@@ -8,19 +8,55 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!--MODAL-->
+    <div id="selector" class="modal">
+        <div class="modal-content">
+                <h1 id=Title>Wacken Open Air Metal Battle</h1>
+                <h2>Choose your fighter!</h2>
+                <label for="firstName">Enter your name:</label>
+                <input type="text" id="firstName" name="firstName" required><br>
+                <label for="firstRace">Choose your race:</label>
+                <select id="firstRace" name="firstRace" required>
+                    <option value=""></option>
+                    <option value="Human">Human (20% less damage taken)</option>
+                    <option value="Orc">Orc (40% more max health)</option>
+                    <option value="Elf">Elf (30% chance to deflect the attack back)</option>
+                    <option value="Vampire">Vampire (10% lifesteal at vampire's turn)</option>
+                </select>
+                <br>
+                <label for="firstItem">Choose your special item:</label>
+                <select id="firstItem" name="firstItem" required>
+                    <option value=""></option>
+                    <option value="Boots">Boots (30% chance to dodge an attack)</option>
+                    <option value="Staff">Staff (20% increase in healing)</option>
+                    <option value="Sword">Sword (30% more damage)</option>
+                    <option value="Bow">Bow (30% chance to attack twice)</option>
+                </select>
+                <br>
+                <button id="fight" class="fight">FIGHT</button>
+        </div>
+    </div>
+    
     <header id=header>
+        <button id=firstChoose class=buttons type=button>Change your Hero</button>
         <img id=headerLogo src="assets/logo.png" alt="Logo">
-        <h1 id=headerTitle style="display: none">Wacken Open Air Metal Battle</h1>
+        <button id=secondChoose class=buttons type=button>Choose your Enemy</button>
     </header>
     <main id=mainContainer class=container>                
         <section id=battleCharacters class=container>
             <section id=firstCharacter class=container>
                 <section id=firstNameContainer class=container>
-                    <h2 id=firstName>Our hero</h2>
+                    <h2 id=firstNameDisplay>Your name</h2>
+                </section>
+                <section id=firstRaceContainer class=container>
+                    <p id=firstRaceDisplay>Your race</p>
+                </section>
+                <section id=firstItemContainer class=container>
+                    <p id=firstItemDisplay>Your item</p>
                 </section>
                 <section id=firstHPContainer class=container>
-                    <label for="firstHP">HP:</label>
-                    <progress id="firstHPbar" value="100" max="100">100/100</progress>
+                    <label id=firstHPDisplay for=firstHP>HP: 100/100</label>
+                    <progress id="firstHP" value="100" max="100"></progress>
                 </section>
                 <section id=firstPhotoContainer class=container>
                     <img id=firstPhoto src="assets/satyricon - frost - attack.jpg" alt="First Character Photo">
@@ -36,11 +72,17 @@
             </section>
             <section id=secondCharacter class=container>
                 <section id=secondNameContainer class=container>
-                    <h2 id=secondName>Enemy</h2>
+                    <h2 id=secondNameDisplay>Enemy</h2>
+                </section>
+                <section id=secondRaceContainer class=container>
+                    <p id=secondRaceDisplay>Race:</p>
+                </section>
+                <section id=secondItemContainer class=container>
+                    <p id=secondItemDisplay>Special item:</p>
                 </section>
                 <section id=secondHPContainer class=container>
-                    <label for="secondHP">HP:</label>
-                    <progress id="secondHPbar" value="100" max="100">100/100</progress>
+                    <label id=secondHPDisplay for=secondHP>HP: 100/100</label>
+                    <progress id=secondHP value="100" max="100"></progress>
                 </section>
                 <section id=secondPhotoContainer class=container>
                     <img id=secondPhoto src="assets/abbath-attack.jpg" alt="Second Character Photo">
@@ -54,7 +96,7 @@
         </section>
         <section id=logContainer class=container>
             <h2>Battle Log</h2>
-            <p id=log>...</p>
+            <p id=log>Just another day at Wacken Open Air.</p>
         </section>
     </main>
     <footer>

@@ -26,14 +26,35 @@ body {
 }
 
 header {
+    width: 85%;
     grid-column: 1;
     grid-row: 1 / 2;
     place-self: center;
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    grid-template-rows: auto;
+    justify-items: center;
 }
 
-header img {
+#headerLogo {
     height: 100px;
     width: auto;
+    grid-column: 2;
+    grid-row: 1;
+}
+
+#firstChoose {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: left;
+    align-self: center;
+}
+
+#secondChoose {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: right;
+    align-self: center;
 }
 
 main {
@@ -50,11 +71,11 @@ main {
 }
 
 #battleCharacters {
-    width: 80%;
+    width: 90%;
     grid-column: 1;
     grid-row: 1 / 2;
     display: grid;
-    grid-template-columns: 40% 20% 40%;
+    grid-template-columns: 45% 10% 45%;
     grid-template-rows: auto;
     justify-items: center;
 }
@@ -64,7 +85,7 @@ main {
     grid-row: 1;
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 5% 5% 80% 10%;
+    grid-template-rows: 5% 3% 3% 4% 80% 5%;
     justify-items: center;
 }
 
@@ -83,56 +104,88 @@ main {
     grid-row: 1;
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 5% 5% 80% 10%;
+    grid-template-rows: 5% 3% 3% 4% 80% 5%;
     justify-items: center;
 }
 
 #firstNameContainer {
     grid-column: 1;
-    grid-row: 1 / 2;
-    place-self: center;
+    grid-row: 1;
+    justify-self: left;
+    align-self: center;
+}
+
+#firstRaceContainer {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: left;
+    align-self: center;
+}
+
+#firstItemContainer {
+    grid-column: 1;
+    grid-row: 3;
+    justify-self: left;
+    align-self: center;
 }
 
 #firstHPContainer {
     grid-column: 1;
-    grid-row: 2 / 3;
-    place-self: center;
+    grid-row: 4;
+    justify-self: left;
+    align-self: center;
 }
 
 #firstPhotoContainer {
     grid-column: 1;
-    grid-row: 3 / 4;
+    grid-row: 5;
     place-self: center;
 }
 
 #firstButtonContainer {
     grid-column: 1;
-    grid-row: 4 / 5;
+    grid-row: 6;
     justify-items: center;
     place-self: center;
 }
 
 #secondNameContainer {
     grid-column: 1;
-    grid-row: 1 / 2;
-    place-self: center;
+    grid-row: 1;
+    justify-self: left;
+    align-self: center;
+}
+
+#secondRaceContainer {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: left;
+    align-self: center;
+}
+
+#secondItemContainer {
+    grid-column: 1;
+    grid-row: 3;
+    justify-self: left;
+    align-self: center;
 }
 
 #secondHPContainer {
     grid-column: 1;
-    grid-row: 2 / 3;
-    place-self: center;
+    grid-row: 4;
+    justify-self: left;
+    align-self: center;
 }
 
 #secondPhotoContainer {
     grid-column: 1;
-    grid-row: 3 / 4;
+    grid-row: 5;
     place-self: center;
 }
 
 #secondButtonContainer {
     grid-column: 1;
-    grid-row: 4 / 5;
+    grid-row: 6;
     justify-items: center;
     place-self: center;
 }
@@ -140,19 +193,20 @@ main {
 .buttons {
     display: inline-block;
     background: black;
-    border: none;
     margin: 2px 1px;
-    padding: 10px 20px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
     color: white;
+    font-size: 14px;
     text-align: center;
     text-decoration: none;
-    font-size: 14px;
     cursor: pointer;
 }
 
 #logContainer {
     height: 100%;
-    width: 80%;
+    width: 90%;
     grid-column: 1;
     grid-row: 2 / 3;
     background: rgba(255, 255, 255, 0.3);
@@ -164,3 +218,51 @@ footer {
     grid-row: 3 / 4;
     place-self: center;
 }
+
+/* MODAL SELECTOR */
+/* MODAL BACKGROUND */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-image: url(assets/background-modal.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgba(0,0,0,0.4); /* BLACK WITH OPACITY */
+    left: 0;
+    top: 0;
+    padding-top: 1vh;
+    color: white;
+    text-align: center;
+    overflow: auto;
+    line-height: 1.5;
+  }
+  
+  /* MODAL CONTENT */
+  .modal-content {
+    width: 80%;
+    background: rgba(0,0,0,0.5);
+    margin: auto;
+    padding: 10px;
+    border: 10px solid white;
+  }
+  
+  /* FIGHT BUTTON */
+  .fight {    
+    background: black;
+    padding: 5px;
+    margin-top: 20px;
+    border: none; 
+    border-radius: 5px;
+    font-size: 20px;
+    color: white;
+  }
+  
+  .fight:hover, .fight:focus {
+    background: green;
+    text-decoration: none;
+    cursor: pointer;
+  }
