@@ -20,7 +20,7 @@ body {
     margin: auto;
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 10% 85% 5%;
+    grid-template-rows: 1fr 8.5fr 5fr;
     justify-items: center;
 }
 
@@ -31,7 +31,7 @@ header {
     grid-row: 1 / 2;
     place-self: center;
     display: grid;
-    grid-template-columns: 25% 50% 25%;
+    grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: auto;
     justify-items: center;
 }
@@ -66,7 +66,7 @@ main {
     margin: auto;
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 80% 20%;
+    grid-template-rows: 8fr 2fr;
     justify-items: center;
 }
 
@@ -76,9 +76,10 @@ main {
     grid-column: 1;
     grid-row: 1 / 2;
     display: grid;
-    grid-template-columns: 45% 10% 45%;
+    grid-template-columns: 4.5fr 1fr 4.5fr;
     grid-template-rows: auto;
     justify-items: center;
+    align-items: center;
 }
 
 #heroCharacter {
@@ -88,29 +89,30 @@ main {
     grid-row: 1;
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 5% 3% 3% 4% 80% 5%;
+    grid-template-rows: 5fr 3fr 3fr 4fr 80fr 5fr;
     justify-items: center;
     justify-self: left;
 }
 
 #versus {
     height: 100%;
-    width: 100%;
     grid-column: 2 / 3;
     grid-row: 1;
 }
 
 #versusLogo {
-    max-height: 100px;
+    height: 100px;
     width: auto;
 }
 
 #enemyCharacter {
+    height: 100%;
+    width: 100%;
     grid-column: 3 / 4;
     grid-row: 1;
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 5% 3% 3% 4% 80% 5%;
+    grid-template-rows: 5fr 3fr 3fr 4fr 80fr 5fr;
     justify-items: center;
     justify-self: right;
 }
@@ -144,10 +146,6 @@ main {
 }
 
 #heroPhotoContainer {
-    background-image: url(assets/hero-sword-dio.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
     grid-column: 1;
     grid-row: 5;
     justify-self: left;
@@ -195,10 +193,6 @@ main {
 }
 
 #enemyPhotoContainer {
-    background-image: url(assets/enemy-abbath-orc-rest.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
     grid-column: 1;
     grid-row: 5;
     justify-self: right;
@@ -235,6 +229,7 @@ main {
 #logContainer {
     height: 100%;
     width: 100%;
+    padding: 10px;
     grid-column: 1;
     grid-row: 2 / 3;
     background: rgba(255, 255, 255, 0.3);
