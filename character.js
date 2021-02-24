@@ -60,6 +60,8 @@ document.getElementById("fightHero").onclick = function() {
     document.getElementById("heroHPDisplay").innerHTML = "HP: "+ hero.currentHealth + "/" + hero.maxHealth;
     document.getElementById("heroHP").value = hero.currentHealth;
     document.getElementById("heroHP").max = hero.maxHealth;
+    loadHP("heroHP");
+    loadHP("enemyHP");
     logtxt = "Just another day at Wacken Open Air.";
     log.innerHTML = logtxt;
     logtxt = logtxt + ("<br>" + hero.name + " the " + hero.race + " will fight " + enemy.name + " the " + enemy.race + "!");
@@ -86,6 +88,8 @@ document.getElementById("fightEnemy").onclick = function() {
     document.getElementById("enemyHPDisplay").innerHTML = "HP: "+ enemy.currentHealth + "/" + enemy.maxHealth;
     document.getElementById("enemyHP").value = enemy.currentHealth;
     document.getElementById("enemyHP").max = enemy.maxHealth;
+    loadHP("heroHP");
+    loadHP("enemyHP");
     logtxt = "Just another day at Wacken Open Air.";
     log.innerHTML = logtxt;
     logtxt = logtxt + ("<br>" + hero.name + " the " + hero.race + " will fight " + enemy.name + " the " + enemy.race + "!");
@@ -176,3 +180,20 @@ document.getElementById("enemyYield").addEventListener("click", () => {
     log.innerHTML = logtxt;
     document.getElementById("logContainer").scrollTop = 9999999;
 });
+
+// LOAD FULL HP //
+
+loadHP = (playerHP) => {
+    var progressbar = document.getElementById(playerHP);
+    var max = progressbar.max;
+    var value = 0;
+    var time = (1000/max)*5;
+    const loading = () => {
+        value = value + 1;
+        progressbar.value = value;
+        if (value == max) {
+            clearInterval(animate);
+        }
+    };
+    const animate = setInterval(() => loading (), time);
+}

@@ -242,7 +242,12 @@ footer {
     place-self: center;
 }
 
+progress {
+    color: white;
+}
+
 /* MODAL SELECTOR */
+
 /* MODAL BACKGROUND */
 .modal {
     display: none;
@@ -264,7 +269,7 @@ footer {
     line-height: 1.5;
   }
   
-  /* MODAL CONTENT */
+/* MODAL CONTENT */
   .modal-content {
     width: 80%;
     background: rgba(0,0,0,0.5);
@@ -273,7 +278,7 @@ footer {
     border: 10px solid white;
   }
   
-  /* FIGHT BUTTON */
+/* FIGHT BUTTON */
   .fight {    
     background: black;
     padding: 5px;
