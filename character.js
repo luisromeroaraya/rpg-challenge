@@ -48,17 +48,17 @@ document.getElementById("secondYield").addEventListener("click", () => {
 
 // MODAL SELECTOR //
 
-var modal = document.getElementById("selector");
+var modalHero = document.getElementById("modalHero");
 
 window.onload = function() {
-   modal.style.display = "block";
+   modalHero.style.display = "block";
 }
 
 document.getElementById("firstChoose").addEventListener("click", () => {
-    modal.style.display = "block";
+    modalHero.style.display = "block";
 });
 
-fight.onclick = function() {
+document.getElementById("fightHero").onclick = function() {
     firstName = document.getElementById("firstName").value;
     firstRace = document.getElementById("firstRace").value;
     firstItem = document.getElementById("firstItem").value;
@@ -73,5 +73,51 @@ fight.onclick = function() {
     logtxt = logtxt + ("<br>" + firstName + " the " + firstRace + " will fight " + secondName + " the " + secondRace + "!");
     log.innerHTML = logtxt;
     document.getElementById("logContainer").scrollTop = 9999999;
-    modal.style.display = "none";
+    modalHero.style.display = "none";
  }
+
+ var modalEnemy = document.getElementById("modalEnemy");
+
+ document.getElementById("secondChoose").addEventListener("click", () => {
+    modalEnemy.style.display = "block";
+});
+
+document.getElementById("fightEnemy").onclick = function() {
+    secondName = document.getElementById("secondName").value;
+    secondRace = document.getElementById("secondRace").value;
+    secondItem = document.getElementById("secondItem").value;
+    document.getElementById("secondNameDisplay").innerHTML = "Enemy: " + secondName;
+    document.getElementById("secondRaceDisplay").innerHTML = "Race: " + secondRace;
+    document.getElementById("secondItemDisplay").innerHTML = "Special item: " + secondItem;
+    logtxt = "Just another day at Wacken Open Air.";
+    log.innerHTML = logtxt;
+    logtxt = logtxt + ("<br>" + firstName + " the " + firstRace + " will fight " + secondName + " the " + secondRace + "!");
+    log.innerHTML = logtxt;
+    document.getElementById("logContainer").scrollTop = 9999999;
+    modalEnemy.style.display = "none";
+ }
+
+changeEnemy = () => {
+    switch(document.getElementById("secondName").value) {
+        case "Varg Vikernes":
+            document.getElementById("secondRace").value = "Human";
+            document.getElementById("secondItem").value = "Staff";
+            document.getElementById("secondPhoto").src = "assets/enemy-varg-human-rest.jpg";
+            break;
+        case "Abbath":
+            document.getElementById("secondRace").value = "Orc";
+            document.getElementById("secondItem").value = "Sword";
+            document.getElementById("secondPhoto").src = "assets/enemy-abbath-orc-rest.jpg";
+            break;
+            case "Aerendir":
+            document.getElementById("secondRace").value = "Elf";
+            document.getElementById("secondItem").value = "Bow";
+            document.getElementById("secondPhoto").src = "assets/enemy-aerendir-elf-rest.jpg";
+            break;
+        case "Frost":
+            document.getElementById("secondRace").value = "Vampire";
+            document.getElementById("secondItem").value = "Boots";
+            document.getElementById("secondPhoto").src = "assets/enemy-frost-vampire-rest.jpg";
+            break;
+      }
+}

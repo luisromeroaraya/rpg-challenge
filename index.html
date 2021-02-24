@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!--MODAL-->
-    <div id="selector" class="modal">
+    <!--MODAL HERO-->
+    <div id="modalHero" class="modal">
         <div class="modal-content">
                 <h1 id=Title>Wacken Open Air Metal Battle</h1>
                 <h2>Choose your fighter!</h2>
@@ -33,7 +33,42 @@
                     <option value="Bow">Bow (30% chance to attack twice)</option>
                 </select>
                 <br>
-                <button id="fight" class="fight">FIGHT</button>
+                <button id="fightHero" class="fight">FIGHT</button>
+        </div>
+    </div>
+
+    <div id="modalEnemy" class="modal">
+        <div class="modal-content">
+                <h1 id=Title>Wacken Open Air Metal Battle</h1>
+                <h2>Change your opposant!</h2>
+                <label for="secondName">Choose your enemy:</label>
+                <select id="secondName" name="secondName" onchange="changeEnemy()" required>
+                    <option value=""></option>
+                    <option value="Varg Vikernes">Varg Vikernes</option>
+                    <option value="Abbath">Abbath</option>
+                    <option value="Aerendir">Aerendir</option>
+                    <option value="Frost">Frost</option>
+                </select>
+                <br>
+                <label for="secondRace">Choose your race:</label>
+                <select id="secondRace" name="firstRace" disabled>
+                    <option value=""></option>
+                    <option value="Human">Human (20% less damage taken)</option>
+                    <option value="Orc">Orc (40% more max health)</option>
+                    <option value="Elf">Elf (30% chance to deflect the attack back)</option>
+                    <option value="Vampire">Vampire (10% lifesteal at vampire's turn)</option>
+                </select>
+                <br>
+                <label for="secondItem">Choose your special item:</label>
+                <select id="secondItem" name="firstItem" disabled>
+                    <option value=""></option>
+                    <option value="Boots">Boots (30% chance to dodge an attack)</option>
+                    <option value="Staff">Staff (20% increase in healing)</option>
+                    <option value="Sword">Sword (30% more damage)</option>
+                    <option value="Bow">Bow (30% chance to attack twice)</option>
+                </select>
+                <br>
+                <button id="fightEnemy" class="fight">FIGHT</button>
         </div>
     </div>
     
@@ -59,7 +94,7 @@
                     <progress id="firstHP" value="100" max="100"></progress>
                 </section>
                 <section id=firstPhotoContainer class=container>
-                    <img id=firstPhoto src="assets/hero-sword-dio.jpg" alt="First Character Photo">
+                    <img id=firstPhoto src="assets/hero-sword-dio.jpg" alt="Hero Photo">
                 </section>
                 <section id=firstButtonsContainer class=container>
                     <button id=firstAttack class=buttons type=button>Attack</button>
@@ -85,7 +120,7 @@
                     <progress id=secondHP value="100" max="100"></progress>
                 </section>
                 <section id=secondPhotoContainer class=container>
-                    <img id=secondPhoto src="assets/enemy-orc-abbath-rest.jpg" alt="Second Character Photo">
+                    <img id=secondPhoto src="assets/enemy-abbath-orc-rest.jpg" alt="Enemy Photo">
                 </section>
                 <section id=secondButtonsContainer class=container>
                     <button id=secondAttack class=buttons type=button>Attack</button>
