@@ -2,23 +2,22 @@
     border: 0;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 html {
     height: 100vh;
     width: 100vw;
-    background: black;
+    background: url(/rpg-challenge/assets/background-day.jpg) no-repeat center fixed;
+    background-size: cover;
 }
 
 body {
-    height: calc(100% - 20px);
-    width: calc(100% - 20px);
+    height: 100%;
+    width: 100%;
+    max-height: 1000px;
+    max-width: 800px;
     margin: auto;
-    background-image: url(/rpg-challenge/assets/background-day.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    border: solid white 10px;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: 10% 85% 5%;
@@ -26,7 +25,8 @@ body {
 }
 
 header {
-    width: 85%;
+    height: 100%;
+    width: 100%;
     grid-column: 1;
     grid-row: 1 / 2;
     place-self: center;
@@ -37,7 +37,7 @@ header {
 }
 
 #headerLogo {
-    height: 100px;
+    max-height: 100px;
     width: auto;
     grid-column: 2;
     grid-row: 1;
@@ -61,8 +61,8 @@ main {
     grid-column: 1;
     grid-row: 2 / 3;
     place-self: center;
-    width: 100%;
     height: 100%;
+    width: 100%;
     margin: auto;
     display: grid;
     grid-template-columns: auto;
@@ -71,7 +71,8 @@ main {
 }
 
 #battleCharacters {
-    width: 90%;
+    height: 100%;
+    width: 100%;
     grid-column: 1;
     grid-row: 1 / 2;
     display: grid;
@@ -81,21 +82,26 @@ main {
 }
 
 #heroCharacter {
+    height: 100%;
+    width: 100%;
     grid-column: 1 / 2;
     grid-row: 1;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: 5% 3% 3% 4% 80% 5%;
     justify-items: center;
+    justify-self: left;
 }
 
 #versus {
+    height: 100%;
+    width: 100%;
     grid-column: 2 / 3;
     grid-row: 1;
 }
 
 #versusLogo {
-    height: 150px;
+    max-height: 100px;
     width: auto;
 }
 
@@ -106,6 +112,7 @@ main {
     grid-template-columns: auto;
     grid-template-rows: 5% 3% 3% 4% 80% 5%;
     justify-items: center;
+    justify-self: right;
 }
 
 #heroNameContainer {
@@ -137,9 +144,19 @@ main {
 }
 
 #heroPhotoContainer {
+    background-image: url(assets/hero-sword-dio.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
     grid-column: 1;
     grid-row: 5;
-    place-self: center;
+    justify-self: left;
+    align-self: center;}
+
+#heroPhoto {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
 
 #heroButtonContainer {
@@ -152,35 +169,46 @@ main {
 #enemyNameContainer {
     grid-column: 1;
     grid-row: 1;
-    justify-self: left;
+    justify-self: right;
     align-self: center;
 }
 
 #enemyRaceContainer {
     grid-column: 1;
     grid-row: 2;
-    justify-self: left;
+    justify-self: right;
     align-self: center;
 }
 
 #enemyItemContainer {
     grid-column: 1;
     grid-row: 3;
-    justify-self: left;
+    justify-self: right;
     align-self: center;
 }
 
 #enemyHPContainer {
     grid-column: 1;
     grid-row: 4;
-    justify-self: left;
+    justify-self: right;
     align-self: center;
 }
 
 #enemyPhotoContainer {
+    background-image: url(assets/enemy-abbath-orc-rest.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
     grid-column: 1;
     grid-row: 5;
-    place-self: center;
+    justify-self: right;
+    align-self: center;
+}
+
+#enemyPhoto {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
 
 #enemyButtonContainer {
@@ -206,7 +234,7 @@ main {
 
 #logContainer {
     height: 100%;
-    width: 90%;
+    width: 100%;
     grid-column: 1;
     grid-row: 2 / 3;
     background: rgba(255, 255, 255, 0.3);

@@ -1,9 +1,11 @@
 var heroName = "Frost";
 var heroRace = "Vampire";
 var heroItem = "Sword";
+var heroHP = 100;
 var enemyName = "Abbath";
 var enemyRace = "Orc";
 var enemyItem = "Axe";
+var enemyHP = 140;
 
 var log = document.getElementById("log");
 var logtxt = "Just another day at Wacken Open Air.";
