@@ -91,7 +91,7 @@ Create an HTML page with the following elements included:
 
 ### Challenge 5
 
-- [ ] Display the health bar of both players this should work real-time. Make sure it has a decrease/increase animation Make use of max-health and currentHealth.
+- [x] Display the health bar of both players this should work real-time. Make sure it has a decrease/increase animation Make use of max-health and currentHealth.
 
 <details>
 <summary>Finished?</summary>
@@ -112,11 +112,11 @@ Great! Now proceed.
 
 ### Challenge 2:
 
-- [ ] Initiate a temporary character. We will use this to test our game logic.
+- [x] Initiate a temporary character. We will use this to test our game logic.
 
 ### Challenge 3:
 
-- [ ] Write a function that will handle the races. This will only run once.
+- [x] Write a function that will handle the races. This will only run once.
 
 ### Challenge 4:
 
@@ -124,11 +124,11 @@ Great! Now proceed.
 
 #### Challenge 5:
 
-- [ ] Make the functions work with the character. See if the stats change on creation.
+- [x] Make the functions work with the character. See if the stats change on creation.
 
 #### Challenge 6:
 
-- [ ] Lower the health of your object and create a healing function that will use the `heal` function. (character.js) Make it so the function uses a random number between the minHealing and maxHealing.
+- [x] Lower the health of your object and create a healing function that will use the `heal` function. (character.js) Make it so the function uses a random number between the minHealing and maxHealing.
 
 **Note:** The `currentHealth` should NEVER go above the `maxHealth`
 
@@ -143,14 +143,14 @@ Great! Now proceed.
 We are almost finished. There are still some things to tackle.
 
 Here is a list of what you should work out:
-- [ ] Combine the code + html for some 'working result'.
-- [ ] Inputs should generate the characters stats.
-- [ ] Work out the attack function (Almost the same as heal but it has to hit the enemy).
+- [x] Combine the code + html for some 'working result'.
+- [x] Inputs should generate the characters stats.
+- [x] Work out the attack function (Almost the same as heal but it has to hit the enemy).
 - [ ] When a player loses, display a victory message & a loose message for each player.
 - [ ] At the end of the game, you should be able to restart the game to create a new character.
  
 ## The final encounter
-- [ ] Style this arena to your taste.
+- [x] Style this arena to your taste.
 - [ ] Add extra functions. (Keep it appropriate.)
 - [ ] Prepare to present your work.
 
@@ -160,8 +160,8 @@ Here is a list of what you should work out:
 </details>
 
 ## Goals
-- [ ] Understand DOM manipulation.
+- [x] Understand DOM manipulation.
 - [ ] Understand forms input.
 - [ ] Understand JSON.
-- [ ] Understand basic javascript.
+- [x] Understand basic javascript.
  Have extra fun!
