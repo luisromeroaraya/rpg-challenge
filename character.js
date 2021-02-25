@@ -68,110 +68,87 @@ function Person(name, race, item) {
 }
 
 // MODAL SELECTORS //
-var modalHero = document.getElementById("modalHero");
-var modalEnemy = document.getElementById("modalEnemy");
 
 // SHOW HERO MODAL SELECTOR ON LOAD PAGE AND SETS RANDOM ENEMY //
 window.onload = function() { 
-    modalHero.style.display = "block";
     randomEnemy();
     changeEnemy();
-    enemyName = document.getElementById("enemyName").value;
-    enemyRace = document.getElementById("enemyRace").value;
-    enemyItem = document.getElementById("enemyItem").value;
-    enemy = new Person(enemyName, enemyRace, enemyItem);
-    enemy.displayChar();
-    document.getElementById("enemyNameDisplay").innerHTML = "Enemy: " + enemy.name;
-    document.getElementById("enemyRaceDisplay").innerHTML = "Race: " + enemy.race;
-    document.getElementById("enemyItemDisplay").innerHTML = "Special item: " + enemy.item;
-    enemy.currentHealth = 0;
-    document.getElementById("enemyHP").value = enemy.currentHealth;
-    document.getElementById("enemyHP").max = enemy.maxHealth;
+    modalHero.style.display = "block";
 }
 
 // SHOW HERO MODAL SELECTOR ON BUTTON CLICK //
-document.getElementById("heroChoose").addEventListener("click", () => {
+heroChoose.addEventListener("click", () => {
     modalHero.style.display = "block";
 });
 
 // SET VALUES AFTER CHOOSING HERO //
-document.getElementById("fightHero").onclick = function() {
-    heroName = document.getElementById("heroName").value;
-    heroRace = document.getElementById("heroRace").value;
-    heroItem = document.getElementById("heroItem").value;
-    hero = new Person(heroName, heroRace, heroItem);
+fightHero.onclick = function() {
+    hero = new Person(heroName.value, heroRace.value, heroItem.value);
     hero.displayChar();
-    document.getElementById("heroNameDisplay").innerHTML = "Hero: " + hero.name;
-    document.getElementById("heroRaceDisplay").innerHTML = "Race: " + hero.race;
-    document.getElementById("heroItemDisplay").innerHTML = "Special item: "+ hero.item;
+    heroNameDisplay.innerHTML = "Hero: " + hero.name;
+    heroRaceDisplay.innerHTML = "Race: " + hero.race;
+    heroItemDisplay.innerHTML = "Special item: "+ hero.item;
     hero.currentHealth = 0;
-    document.getElementById("heroHP").value = hero.currentHealth;
-    document.getElementById("heroHP").max = hero.maxHealth;
+    heroHP.value = hero.currentHealth;
+    heroHP.max = hero.maxHealth;
     hero.heal("hero", hero.maxHealth);
     enemy.heal("enemy", enemy.maxHealth);
     logtxt = "Just another day at Wacken Open Air.";
-    log.innerHTML = logtxt;
+    updateLog();
     logtxt = logtxt + ("<br>" + hero.name + " the " + hero.race + " will fight " + enemy.name + " the " + enemy.race + "!");
-    log.innerHTML = logtxt;
-    document.getElementById("logContainer").scrollTop = 9999999;
+    updateLog();
     modalHero.style.display = "none";
  }
 
  // SHOW ENEMY MODAL SELECTOR ON BUTTON CLICK //
- document.getElementById("enemyChoose").addEventListener("click", () => {
+ enemyChoose.addEventListener("click", () => {
     modalEnemy.style.display = "block";
 });
 
 // SET VALUES AFTER CHOOSING ENEMY //
-document.getElementById("fightEnemy").onclick = function() {
-    enemyName = document.getElementById("enemyName").value;
-    enemyRace = document.getElementById("enemyRace").value;
-    enemyItem = document.getElementById("enemyItem").value;
-    enemy = new Person(enemyName, enemyRace, enemyItem);
-    enemy.displayChar();
-    document.getElementById("enemyNameDisplay").innerHTML = "Enemy: " + enemy.name;
-    document.getElementById("enemyRaceDisplay").innerHTML = "Race: " + enemy.race;
-    document.getElementById("enemyItemDisplay").innerHTML = "Special item: " + enemy.item;
-    enemy.currentHealth = 0;
-    document.getElementById("enemyHP").value = enemy.currentHealth;
-    document.getElementById("enemyHP").max = enemy.maxHealth;
+fightEnemy.onclick = function() {
     hero.currentHealth = 0;
-    document.getElementById("heroHP").value = hero.currentHealth;
-    document.getElementById("heroHP").max = hero.maxHealth;
+    heroHP.value = hero.currentHealth;
+    heroHP.max = hero.maxHealth;
     hero.heal("hero", hero.maxHealth);
     enemy.heal("enemy", enemy.maxHealth);
     logtxt = "Just another day at Wacken Open Air.";
-    log.innerHTML = logtxt;
+    updateLog();
     logtxt = logtxt + ("<br>" + hero.name + " the " + hero.race + " will fight " + enemy.name + " the " + enemy.race + "!");
-    log.innerHTML = logtxt;
-    document.getElementById("logContainer").scrollTop = 9999999;
+    updateLog();
     modalEnemy.style.display = "none";
  }
 
 // FIX ENEMY SELECTOR VALUES AFTER CHOOSING ENEMY //
 changeEnemy = () => {
-    switch(document.getElementById("enemyName").value) {
-        case "Varg Vikernes":
-            document.getElementById("enemyRace").value = "Human";
-            document.getElementById("enemyItem").value = "Staff";
-            document.getElementById("enemyPhoto").src = "assets/enemy-varg-human-rest.jpg";
-            break;
-        case "Abbath":
-            document.getElementById("enemyRace").value = "Orc";
-            document.getElementById("enemyItem").value = "Sword";
-            document.getElementById("enemyPhoto").src = "assets/enemy-abbath-orc-rest.jpg";
-            break;
-            case "Aerendir":
-            document.getElementById("enemyRace").value = "Elf";
-            document.getElementById("enemyItem").value = "Bow";
-            document.getElementById("enemyPhoto").src = "assets/enemy-aerendir-elf-rest.jpg";
-            break;
-        case "Frost":
-            document.getElementById("enemyRace").value = "Vampire";
-            document.getElementById("enemyItem").value = "Boots";
-            document.getElementById("enemyPhoto").src = "assets/enemy-frost-vampire-rest.jpg";
-            break;
-      }
+    if (enemyName.value == "Varg Vikernes") {
+        enemyRace.value = "Human";
+        enemyItem.value = "Staff";
+        enemyPhoto.src = "assets/enemy-varg-human-rest.jpg";
+    }
+    else if (enemyName.value == "Abbath") {
+        enemyRace.value = "Orc";
+        enemyItem.value = "Sword";
+        enemyPhoto.src = "assets/enemy-abbath-orc-rest.jpg";
+    } 
+    else if (enemyName.value == "Aerendir") {
+        enemyRace.value = "Elf";
+        enemyItem.value = "Bow";
+        enemyPhoto.src = "assets/enemy-aerendir-elf-rest.jpg";
+    } 
+    else if (enemyName.value == "Frost") {
+        enemyRace.value = "Vampire";
+        enemyItem.value = "Boots";
+        enemyPhoto.src = "assets/enemy-frost-vampire-rest.jpg";
+    }
+    enemy = new Person(enemyName.value, enemyRace.value, enemyItem.value);
+    enemy.displayChar();
+    enemyNameDisplay.innerHTML = "Enemy: " + enemy.name;
+    enemyRaceDisplay.innerHTML = "Race: " + enemy.race;
+    enemyItemDisplay.innerHTML = "Special item: " + enemy.item;
+    enemy.currentHealth = 0;
+    enemyHP.value = enemy.currentHealth;
+    enemyHP.max = enemy.maxHealth;
 }
 
 // RANDOMIZE FIRST ENEMY //
@@ -180,57 +157,57 @@ randomEnemy = () => {
     console.log(random);
     switch(random) {
         case 0:
-            document.getElementById("enemyName").value = "Varg Vikernes";
+            enemyName.value = "Varg Vikernes";
             break;
         case 1:
-            document.getElementById("enemyName").value = "Abbath";
+            enemyName.value = "Abbath";
             break;
         case 2:
-            document.getElementById("enemyName").value = "Aerendir";
+            enemyName.value = "Aerendir";
             break;
         case 3:
-            document.getElementById("enemyName").value = "Frost";
+            enemyName.value = "Frost";
             break;
       }
 }
 
+// UPDATE BATTLE LOG //
+updateLog = () => {
+    log.innerHTML = logtxt;
+    logContainer.scrollTop = 9999999;
+}
+
 // BUTTON HANDLERS //
-document.getElementById("heroAttack").addEventListener("click", () => {
+heroAttack.addEventListener("click", () => {
     hero.attack("enemy", enemy);
     logtxt = logtxt + ("<br>" + hero.name + " attacks " + enemy.name + " dealing "+ hero.totalDamage + " points of damage.");
-    log.innerHTML = logtxt;
-    document.getElementById("logContainer").scrollTop = 9999999;
+    updateLog();
 });
 
-document.getElementById("enemyAttack").addEventListener("click", () => {
+enemyAttack.addEventListener("click", () => {
     enemy.attack("hero", hero);
     logtxt = logtxt + ("<br>" + enemy.name + " attacks " + hero.name  + " dealing "+ enemy.totalDamage + " points of damage.");
-    log.innerHTML = logtxt;
-    document.getElementById("logContainer").scrollTop = 9999999;
+    updateLog();
 });
 
-document.getElementById("heroHeal").addEventListener("click", () => {
+heroHeal.addEventListener("click", () => {
     hero.heal("hero");
     logtxt = logtxt + ("<br>" + hero.name + " heals himself.");
-    log.innerHTML = logtxt;
-    document.getElementById("logContainer").scrollTop = 9999999;
+    updateLog();
 });
 
-document.getElementById("enemyHeal").addEventListener("click", () => {
+enemyHeal.addEventListener("click", () => {
     enemy.heal("enemy");
     logtxt = logtxt + ("<br>" + enemy.name + " heals himself.");
-    log.innerHTML = logtxt;
-    document.getElementById("logContainer").scrollTop = 9999999;
+    updateLog();
 });
 
-document.getElementById("heroYield").addEventListener("click", () => {
+heroYield.addEventListener("click", () => {
     logtxt = logtxt + ("<br>" + hero.name + " surrenders.");
-    log.innerHTML = logtxt;
-    document.getElementById("logContainer").scrollTop = 9999999;
+    updateLog();
 });
 
-document.getElementById("enemyYield").addEventListener("click", () => {
+enemyYield.addEventListener("click", () => {
     logtxt = logtxt + ("<br>" + enemy.name + " surrenders.");
-    log.innerHTML = logtxt;
-    document.getElementById("logContainer").scrollTop = 9999999;
+    updateLog();
 });
