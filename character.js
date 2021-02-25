@@ -17,9 +17,9 @@ function Person(name, race, item) {
             this.healPoints = Math.floor(Math.random() * (this.maxHealing - this.min) + this.min);
         }
         this.currentHealth = this.currentHealth + this.healPoints;
-        if (this.currentHealth > 100) {
+        if (this.currentHealth > this.maxHealth) {
             this.healPoints = this.maxHealth - this.currentHealth + this.healPoints;
-            this.currentHealth = 100;
+            this.currentHealth = this.maxHealth;
         }
         var HPbar = document.getElementById(playerID+"HP");
         var HPbarDisplay = document.getElementById(playerID+"HPDisplay");
