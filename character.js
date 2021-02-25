@@ -12,12 +12,11 @@ function Person(name, race, item) {
     this.heal = function(playerID, fixedHP) {
         if (fixedHP > 0) {
             this.healPoints = fixedHP;
-            this.currentHealth = fixedHP;
         }
         else {
             this.healPoints = Math.floor(Math.random() * (this.maxHealing - this.min) + this.min);
-            this.currentHealth = this.currentHealth + this.healPoints;
         }
+        this.currentHealth = this.currentHealth + this.healPoints;
         if (this.currentHealth > 100) {
             this.healPoints = this.maxHealth - this.currentHealth + this.healPoints;
             this.currentHealth = 100;
