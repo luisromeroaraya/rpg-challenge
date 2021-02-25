@@ -225,23 +225,50 @@ enemyPhotoAttack = (enemy) => {
     }
 }
 
+// SELECT SOUND FX WHEN ATTACK //
+attackSoundPlay = (player) => {
+    if (player.item == "Staff") {
+        soundStaff.currentTime = 0;
+        soundStaff.play();
+    }
+    else if (player.item == "Bow") {
+        soundArrow.currentTime = 0;
+        soundArrow.play();
+    }
+    else if (player.name == "Frost") {
+        soundKnife.currentTime = 0;
+        soundKnife.play();
+    }
+    else {
+        soundSword.currentTime = 0;
+        soundSword.play();
+    }
+}
+
+
 // BATTLE BUTTONS LISTENERS //
 heroAttack.addEventListener("click", () => {
     hero.attack("enemy", enemy);
     if (hero.totalDamage == 0) {
-        logtxt = logtxt + ("<br>" + hero.name + " attacks " + enemy.name + " but he dodges the attack.");    
+        logtxt = logtxt + ("<br>" + hero.name + " attacks " + enemy.name + " but he dodges the attack.");
+        soundDodge.currentTime = 0;
+        soundDodge.play();
     }
     else {
         logtxt = logtxt + ("<br>" + hero.name + " attacks " + enemy.name + " dealing " + hero.totalDamage + " points of damage.");
+        attackSoundPlay(hero);
     }
     updateLog();
     if (hero.item == "Bow" && success()) {
         hero.attack("enemy", enemy);
         if (hero.totalDamage == 0) {
-            logtxt = logtxt + ("<br>" + hero.name + " attacks " + enemy.name + " again, but he dodges the attack.");    
+            logtxt = logtxt + ("<br>" + hero.name + " attacks " + enemy.name + " again, but he dodges the attack.");
+            soundDodge.currentTime = 0;
+            soundDodge.play();
         }
         else {
             logtxt = logtxt + ("<br>" + hero.name + " attacks " + enemy.name + " again, dealing "+ hero.totalDamage + " points of damage.");
+            attackSoundPlay(hero);
         }
         updateLog();
     }
@@ -252,9 +279,12 @@ enemyAttack.addEventListener("click", () => {
     enemyPhotoAttack(enemy);
         if (enemy.totalDamage == 0) {
         logtxt = logtxt + ("<br>" + enemy.name + " attacks " + hero.name  + " but he dodges the attack.");
+        soundDodge.currentTime = 0;
+        soundDodge.play();
     }
     else {
         logtxt = logtxt + ("<br>" + enemy.name + " attacks " + hero.name  + " dealing "+ enemy.totalDamage + " points of damage.");
+        attackSoundPlay(enemy);
     }
     updateLog();
     if (enemy.item == "Bow" && success()) {
@@ -262,9 +292,12 @@ enemyAttack.addEventListener("click", () => {
         enemyPhotoAttack(enemy);
         if (enemy.totalDamage == 0) {
             logtxt = logtxt + ("<br>" + enemy.name + " attacks " + hero.name  + " again, but he dodges the attack.");
+            soundDodge.currentTime = 0;
+            soundDodge.play();
         }
         else {
             logtxt = logtxt + ("<br>" + enemy.name + " attacks " + hero.name  + " again, dealing "+ enemy.totalDamage + " points of damage.");
+            attackSoundPlay(enemy);
         }
         updateLog();
     }
@@ -272,12 +305,16 @@ enemyAttack.addEventListener("click", () => {
 
 heroHeal.addEventListener("click", () => {
     hero.heal("hero");
+    soundHeal.currentTime = 0;
+    soundHeal.play();
     logtxt = logtxt + ("<br>" + hero.name + " heals himself " + hero.healPoints + " points.");
     updateLog();
 });
 
 enemyHeal.addEventListener("click", () => {
     enemy.heal("enemy");
+    soundHeal.currentTime = 0;
+    soundHeal.play();
     logtxt = logtxt + ("<br>" + enemy.name + " heals himself " + enemy.healPoints + " points.");
     updateLog();
 });
