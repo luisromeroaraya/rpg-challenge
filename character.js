@@ -150,24 +150,6 @@ changeEnemy = () => {
     enemy.displayChar();
 }
 
-randomEnemy = () => {
-    var random = Math.floor(Math.random()*4);
-    switch(random) {
-        case 0:
-            enemyName.value = "Varg Vikernes";
-            break;
-        case 1:
-            enemyName.value = "Abbath";
-            break;
-        case 2:
-            enemyName.value = "Aerendir";
-            break;
-        case 3:
-            enemyName.value = "Frost";
-            break;
-      }
-}
-
 // HANDLE RACE BONUS //
 raceBonus = (person) => {
     switch(person.race) {
@@ -221,6 +203,28 @@ updateLog = () => {
     logContainer.scrollTop = 9999999;
 }
 
+// CHANGE ENEMY PHOTO WHILE ATTACKING //
+enemyPhotoAttack = (enemy) => {
+    switch(enemy.name) {
+        case "Varg Vikernes":
+            enemyPhoto.src = "assets/enemy-varg-human-attack.jpg";
+            setTimeout(function(){ enemyPhoto.src = "assets/enemy-varg-human-rest.jpg"; }, 500);
+            break;
+        case "Abbath":
+            enemyPhoto.src = "assets/enemy-abbath-orc-attack.jpg";
+            setTimeout(function(){ enemyPhoto.src = "assets/enemy-abbath-orc-rest.jpg"; }, 500);
+            break;
+        case "Aerendir":
+            enemyPhoto.src = "assets/enemy-aerendir-elf-attack.jpg";
+            setTimeout(function(){ enemyPhoto.src = "assets/enemy-aerendir-elf-rest.jpg"; }, 500);
+            break;
+        case "Frost":
+            enemyPhoto.src = "assets/enemy-frost-vampire-attack.jpg";
+            setTimeout(function(){ enemyPhoto.src = "assets/enemy-frost-vampire-rest.jpg"; }, 500);
+            break;
+    }
+}
+
 // BATTLE BUTTONS LISTENERS //
 heroAttack.addEventListener("click", () => {
     hero.attack("enemy", enemy);
@@ -245,7 +249,8 @@ heroAttack.addEventListener("click", () => {
 
 enemyAttack.addEventListener("click", () => {
     enemy.attack("hero", hero);
-    if (enemy.totalDamage == 0) {
+    enemyPhotoAttack(enemy);
+        if (enemy.totalDamage == 0) {
         logtxt = logtxt + ("<br>" + enemy.name + " attacks " + hero.name  + " but he dodges the attack.");
     }
     else {
@@ -254,6 +259,7 @@ enemyAttack.addEventListener("click", () => {
     updateLog();
     if (enemy.item == "Bow" && success()) {
         enemy.attack("hero", hero);
+        enemyPhotoAttack(enemy);
         if (enemy.totalDamage == 0) {
             logtxt = logtxt + ("<br>" + enemy.name + " attacks " + hero.name  + " again, but he dodges the attack.");
         }
