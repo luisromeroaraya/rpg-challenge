@@ -9,13 +9,60 @@ function Person(name, race, item) {
     this.maxDamage = 20;
     this.maxHealing = 30;
 
-    this.heal = function(){};
+    this.heal = function(playerID, fixedHP) {
+        if (fixedHP >= 100) {
+            var healPoints = fixedHP;
+        }
+        else {
+            var healPoints = Math.floor(Math.random() * (this.maxHealing - this.min) + this.min);
+        }
+        var targetHP = this.currentHealth + healPoints;
+        var HPbar = document.getElementById(playerID+"HP");
+        var HPbarDisplay = document.getElementById(playerID+"HPDisplay");
+        var time = healPoints/2;
+        const loading = () => {
+            this.currentHealth = this.currentHealth + 1;
+            HPbar.value = this.currentHealth;
+            HPbarDisplay.innerHTML = "HP: "+ HPbar.value + "/" + HPbar.max;
+            if (this.currentHealth == HPbar.max) {
+                clearInterval(animate);
+            }
+            if (this.currentHealth == targetHP) {
+                 clearInterval(animate);
+             }
+        };
+        const animate = setInterval(() => loading (), time);
+    };
 
-    this.damage = function(){};
+    this.damage = function() {
+        var damagePoints = Math.floor(Math.random() * (this.maxDamage - this.min) + this.min);
+        return damagePoints;
+    };
 
     this.totalDamage = this.damage();
 
-    this.displayChar = function(){
+    this.attack = function(enemyID, enemy) {
+        this.totalDamage = this.damage();
+        var targetHP = enemy.currentHealth - this.totalDamage;
+        var HPbar = document.getElementById(enemyID + "HP");
+        var HPbarDisplay = document.getElementById(enemyID + "HPDisplay");
+        var time = this.totalDamage/2;
+        const loading = () => {
+            enemy.currentHealth = enemy.currentHealth - 1;
+            HPbar.value = enemy.currentHealth;
+            HPbarDisplay.innerHTML = "HP: "+ HPbar.value + "/" + HPbar.max;
+            if (enemy.currentHealth == 0) {
+                clearInterval(animate);
+            }
+            if (enemy.currentHealth == targetHP) {
+                clearInterval(animate);
+            }
+        };
+        const animate = setInterval(() => loading (), time);
+
+    }
+
+    this.displayChar = function() {
         return console.log(`I am ${this.name} the ${this.race}! I wield a ${this.item} and my total health points are ${this.maxHealth}`);
     };
 }
@@ -37,7 +84,7 @@ window.onload = function() {
     document.getElementById("enemyNameDisplay").innerHTML = "Enemy: " + enemy.name;
     document.getElementById("enemyRaceDisplay").innerHTML = "Race: " + enemy.race;
     document.getElementById("enemyItemDisplay").innerHTML = "Special item: " + enemy.item;
-    document.getElementById("enemyHPDisplay").innerHTML = "HP: "+ enemy.currentHealth + "/" + enemy.maxHealth;
+    enemy.currentHealth = 0;
     document.getElementById("enemyHP").value = enemy.currentHealth;
     document.getElementById("enemyHP").max = enemy.maxHealth;
 }
@@ -57,11 +104,11 @@ document.getElementById("fightHero").onclick = function() {
     document.getElementById("heroNameDisplay").innerHTML = "Hero: " + hero.name;
     document.getElementById("heroRaceDisplay").innerHTML = "Race: " + hero.race;
     document.getElementById("heroItemDisplay").innerHTML = "Special item: "+ hero.item;
-    document.getElementById("heroHPDisplay").innerHTML = "HP: "+ hero.currentHealth + "/" + hero.maxHealth;
+    hero.currentHealth = 0;
     document.getElementById("heroHP").value = hero.currentHealth;
     document.getElementById("heroHP").max = hero.maxHealth;
-    loadHP("heroHP");
-    loadHP("enemyHP");
+    hero.heal("hero", hero.maxHealth);
+    enemy.heal("enemy", enemy.maxHealth);
     logtxt = "Just another day at Wacken Open Air.";
     log.innerHTML = logtxt;
     logtxt = logtxt + ("<br>" + hero.name + " the " + hero.race + " will fight " + enemy.name + " the " + enemy.race + "!");
@@ -85,11 +132,14 @@ document.getElementById("fightEnemy").onclick = function() {
     document.getElementById("enemyNameDisplay").innerHTML = "Enemy: " + enemy.name;
     document.getElementById("enemyRaceDisplay").innerHTML = "Race: " + enemy.race;
     document.getElementById("enemyItemDisplay").innerHTML = "Special item: " + enemy.item;
-    document.getElementById("enemyHPDisplay").innerHTML = "HP: "+ enemy.currentHealth + "/" + enemy.maxHealth;
+    enemy.currentHealth = 0;
     document.getElementById("enemyHP").value = enemy.currentHealth;
     document.getElementById("enemyHP").max = enemy.maxHealth;
-    loadHP("heroHP");
-    loadHP("enemyHP");
+    hero.currentHealth = 0;
+    document.getElementById("heroHP").value = hero.currentHealth;
+    document.getElementById("heroHP").max = hero.maxHealth;
+    hero.heal("hero", hero.maxHealth);
+    enemy.heal("enemy", enemy.maxHealth);
     logtxt = "Just another day at Wacken Open Air.";
     log.innerHTML = logtxt;
     logtxt = logtxt + ("<br>" + hero.name + " the " + hero.race + " will fight " + enemy.name + " the " + enemy.race + "!");
@@ -146,24 +196,28 @@ randomEnemy = () => {
 
 // BUTTON HANDLERS //
 document.getElementById("heroAttack").addEventListener("click", () => {
-    logtxt = logtxt + ("<br>" + hero.name + " attacks " + enemy.name + ".");
+    hero.attack("enemy", enemy);
+    logtxt = logtxt + ("<br>" + hero.name + " attacks " + enemy.name + " dealing "+ hero.totalDamage + " points of damage.");
     log.innerHTML = logtxt;
     document.getElementById("logContainer").scrollTop = 9999999;
 });
 
 document.getElementById("enemyAttack").addEventListener("click", () => {
-    logtxt = logtxt + ("<br>" + enemy.name + " attacks " + hero.name + ".");
+    enemy.attack("hero", hero);
+    logtxt = logtxt + ("<br>" + enemy.name + " attacks " + hero.name  + " dealing "+ enemy.totalDamage + " points of damage.");
     log.innerHTML = logtxt;
     document.getElementById("logContainer").scrollTop = 9999999;
 });
 
 document.getElementById("heroHeal").addEventListener("click", () => {
+    hero.heal("hero");
     logtxt = logtxt + ("<br>" + hero.name + " heals himself.");
     log.innerHTML = logtxt;
     document.getElementById("logContainer").scrollTop = 9999999;
 });
 
 document.getElementById("enemyHeal").addEventListener("click", () => {
+    enemy.heal("enemy");
     logtxt = logtxt + ("<br>" + enemy.name + " heals himself.");
     log.innerHTML = logtxt;
     document.getElementById("logContainer").scrollTop = 9999999;
@@ -180,20 +234,3 @@ document.getElementById("enemyYield").addEventListener("click", () => {
     log.innerHTML = logtxt;
     document.getElementById("logContainer").scrollTop = 9999999;
 });
-
-// LOAD FULL HP //
-
-loadHP = (playerHP) => {
-    var progressbar = document.getElementById(playerHP);
-    var max = progressbar.max;
-    var value = 0;
-    var time = (1000/max)*5;
-    const loading = () => {
-        value = value + 1;
-        progressbar.value = value;
-        if (value == max) {
-            clearInterval(animate);
-        }
-    };
-    const animate = setInterval(() => loading (), time);
-}
