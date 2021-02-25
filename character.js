@@ -10,28 +10,22 @@ function Person(name, race, item) {
     this.maxHealing = 30;
 
     this.heal = function(playerID, fixedHP) {
-        if (fixedHP >= 100) {
-            var healPoints = fixedHP;
+        if (fixedHP > 0) {
+            this.healPoints = fixedHP;
+            this.currentHealth = fixedHP;
         }
         else {
-            var healPoints = Math.floor(Math.random() * (this.maxHealing - this.min) + this.min);
+            this.healPoints = Math.floor(Math.random() * (this.maxHealing - this.min) + this.min);
+            this.currentHealth = this.currentHealth + this.healPoints;
         }
-        var targetHP = this.currentHealth + healPoints;
+        if (this.currentHealth > 100) {
+            this.healPoints = this.maxHealth - this.currentHealth + this.healPoints;
+            this.currentHealth = 100;
+        }
         var HPbar = document.getElementById(playerID+"HP");
         var HPbarDisplay = document.getElementById(playerID+"HPDisplay");
-        var time = healPoints/2;
-        const loading = () => {
-            this.currentHealth = this.currentHealth + 1;
-            HPbar.value = this.currentHealth;
-            HPbarDisplay.innerHTML = "HP: "+ HPbar.value + "/" + HPbar.max;
-            if (this.currentHealth == HPbar.max) {
-                clearInterval(animate);
-            }
-            if (this.currentHealth == targetHP) {
-                 clearInterval(animate);
-             }
-        };
-        const animate = setInterval(() => loading (), time);
+        HPbar.value = this.currentHealth;
+        HPbarDisplay.innerHTML = "HP: "+ HPbar.value + "/" + HPbar.max;
     };
 
     this.damage = function() {
@@ -43,23 +37,20 @@ function Person(name, race, item) {
 
     this.attack = function(enemyID, enemy) {
         this.totalDamage = this.damage();
-        var targetHP = enemy.currentHealth - this.totalDamage;
+        if (enemy.race == "Human") {
+            this.totalDamage = Math.floor(this.totalDamage * 0.8);
+        }
+        if (enemy.item == "Boots" && success()) {
+            this.totalDamage = 0;
+        }
+        enemy.currentHealth = enemy.currentHealth - this.totalDamage;
+        if (enemy.currentHealth < 0) {
+            enemy.currentHealth = 0;
+        }
         var HPbar = document.getElementById(enemyID + "HP");
-        var HPbarDisplay = document.getElementById(enemyID + "HPDisplay");
-        var time = this.totalDamage/2;
-        const loading = () => {
-            enemy.currentHealth = enemy.currentHealth - 1;
-            HPbar.value = enemy.currentHealth;
-            HPbarDisplay.innerHTML = "HP: "+ HPbar.value + "/" + HPbar.max;
-            if (enemy.currentHealth == 0) {
-                clearInterval(animate);
-            }
-            if (enemy.currentHealth == targetHP) {
-                clearInterval(animate);
-            }
-        };
-        const animate = setInterval(() => loading (), time);
-
+        var HPbarDisplay = document.getElementById(enemyID + "HPDisplay")
+        HPbar.value = enemy.currentHealth;
+        HPbarDisplay.innerHTML = "HP: "+ HPbar.value + "/" + HPbar.max;
     }
 
     this.displayChar = function() {
@@ -83,14 +74,7 @@ heroChoose.addEventListener("click", () => {
 
 // SET VALUES AFTER CHOOSING HERO //
 fightHero.onclick = function() {
-    hero = new Person(heroName.value, heroRace.value, heroItem.value);
-    hero.displayChar();
-    heroNameDisplay.innerHTML = "Hero: " + hero.name;
-    heroRaceDisplay.innerHTML = "Race: " + hero.race;
-    heroItemDisplay.innerHTML = "Special item: "+ hero.item;
-    hero.currentHealth = 0;
-    heroHP.value = hero.currentHealth;
-    heroHP.max = hero.maxHealth;
+    changeHero();
     hero.heal("hero", hero.maxHealth);
     enemy.heal("enemy", enemy.maxHealth);
     logtxt = "Just another day at Wacken Open Air.";
@@ -119,7 +103,21 @@ fightEnemy.onclick = function() {
     modalEnemy.style.display = "none";
  }
 
-// FIX ENEMY SELECTOR VALUES AFTER CHOOSING ENEMY //
+// UPDATE HERO VALUES AFTER CHOOSING HERO //
+changeHero = () => {
+    hero = new Person(heroName.value, heroRace.value, heroItem.value);
+    heroNameDisplay.innerHTML = "Hero: " + hero.name;
+    heroRaceDisplay.innerHTML = "Race: " + hero.race;
+    heroItemDisplay.innerHTML = "Special item: "+ hero.item;
+    hero.currentHealth = 0;
+    raceBonus(hero);
+    itemBonus(hero);
+    heroHP.value = hero.currentHealth;
+    heroHP.max = hero.maxHealth;
+    hero.displayChar();
+}
+
+// FIX ENEMY SELECTOR AND UPDATE ENEMY VALUES AFTER CHOOSING ENEMY //
 changeEnemy = () => {
     if (enemyName.value == "Varg Vikernes") {
         enemyRace.value = "Human";
@@ -142,19 +140,66 @@ changeEnemy = () => {
         enemyPhoto.src = "assets/enemy-frost-vampire-rest.jpg";
     }
     enemy = new Person(enemyName.value, enemyRace.value, enemyItem.value);
-    enemy.displayChar();
     enemyNameDisplay.innerHTML = "Enemy: " + enemy.name;
     enemyRaceDisplay.innerHTML = "Race: " + enemy.race;
     enemyItemDisplay.innerHTML = "Special item: " + enemy.item;
+    raceBonus(enemy);
+    itemBonus(enemy);
     enemy.currentHealth = 0;
     enemyHP.value = enemy.currentHealth;
     enemyHP.max = enemy.maxHealth;
+    enemy.displayChar();
+}
+
+randomEnemy = () => {
+    var random = Math.floor(Math.random()*4);
+    switch(random) {
+        case 0:
+            enemyName.value = "Varg Vikernes";
+            break;
+        case 1:
+            enemyName.value = "Abbath";
+            break;
+        case 2:
+            enemyName.value = "Aerendir";
+            break;
+        case 3:
+            enemyName.value = "Frost";
+            break;
+      }
+}
+
+// HANDLE RACE BONUS //
+raceBonus = (person) => {
+    switch(person.race) {
+        case "Orc":
+            person.maxHealth = person.maxHealth * 1.4;
+            break;
+    }
+}
+
+// HANDLE IETM BONUS //
+itemBonus = (person) => {
+    switch(person.item) {
+        case "Staff":
+            person.maxHealing = person.maxHealing * 1.2;
+            break;
+        case "Sword":
+            person.maxDamage = person.maxDamage * 1.3;
+            break;
+      }
+}
+
+// RANDOM FUNCTION OF 30% CHANCE //
+success = () => {
+    const chance = [true, false, false, false, true, false, false, false, false, true];
+    var random = Math.floor(Math.random()*10);
+    return chance[random];
 }
 
 // RANDOMIZE FIRST ENEMY //
 randomEnemy = () => {
     var random = Math.floor(Math.random()*4);
-    console.log(random);
     switch(random) {
         case 0:
             enemyName.value = "Varg Vikernes";
@@ -177,28 +222,58 @@ updateLog = () => {
     logContainer.scrollTop = 9999999;
 }
 
-// BUTTON HANDLERS //
+// BATTLE BUTTONS LISTENERS //
 heroAttack.addEventListener("click", () => {
     hero.attack("enemy", enemy);
-    logtxt = logtxt + ("<br>" + hero.name + " attacks " + enemy.name + " dealing "+ hero.totalDamage + " points of damage.");
+    if (hero.totalDamage == 0) {
+        logtxt = logtxt + ("<br>" + hero.name + " attacks " + enemy.name + " but he dodges the attack.");    
+    }
+    else {
+        logtxt = logtxt + ("<br>" + hero.name + " attacks " + enemy.name + " dealing " + hero.totalDamage + " points of damage.");
+    }
     updateLog();
+    if (hero.item == "Bow" && success()) {
+        hero.attack("enemy", enemy);
+        if (hero.totalDamage == 0) {
+            logtxt = logtxt + ("<br>" + hero.name + " attacks " + enemy.name + " again, but he dodges the attack.");    
+        }
+        else {
+            logtxt = logtxt + ("<br>" + hero.name + " attacks " + enemy.name + " again, dealing "+ hero.totalDamage + " points of damage.");
+        }
+        updateLog();
+    }
 });
 
 enemyAttack.addEventListener("click", () => {
     enemy.attack("hero", hero);
-    logtxt = logtxt + ("<br>" + enemy.name + " attacks " + hero.name  + " dealing "+ enemy.totalDamage + " points of damage.");
+    if (enemy.totalDamage == 0) {
+        logtxt = logtxt + ("<br>" + enemy.name + " attacks " + hero.name  + " but he dodges the attack.");
+    }
+    else {
+        logtxt = logtxt + ("<br>" + enemy.name + " attacks " + hero.name  + " dealing "+ enemy.totalDamage + " points of damage.");
+    }
     updateLog();
+    if (enemy.item == "Bow" && success()) {
+        enemy.attack("hero", hero);
+        if (enemy.totalDamage == 0) {
+            logtxt = logtxt + ("<br>" + enemy.name + " attacks " + hero.name  + " again, but he dodges the attack.");
+        }
+        else {
+            logtxt = logtxt + ("<br>" + enemy.name + " attacks " + hero.name  + " again, dealing "+ enemy.totalDamage + " points of damage.");
+        }
+        updateLog();
+    }
 });
 
 heroHeal.addEventListener("click", () => {
     hero.heal("hero");
-    logtxt = logtxt + ("<br>" + hero.name + " heals himself.");
+    logtxt = logtxt + ("<br>" + hero.name + " heals himself " + hero.healPoints + " points.");
     updateLog();
 });
 
 enemyHeal.addEventListener("click", () => {
     enemy.heal("enemy");
-    logtxt = logtxt + ("<br>" + enemy.name + " heals himself.");
+    logtxt = logtxt + ("<br>" + enemy.name + " heals himself " + enemy.healPoints + " points.");
     updateLog();
 });
 
