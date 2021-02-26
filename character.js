@@ -80,6 +80,8 @@ fightHero.onclick = function() {
     updateLog();
     logtxt = logtxt + ("<br>" + hero.name + " the " + hero.race + " will fight " + enemy.name + " the " + enemy.race + "!");
     updateLog();
+    musicHero.currentTime = 0;
+    musicHero.play();
     modalHero.style.display = "none";
  }
 
