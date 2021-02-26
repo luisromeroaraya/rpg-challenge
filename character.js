@@ -122,21 +122,29 @@ changeEnemy = () => {
         enemyRace.value = "Human";
         enemyItem.value = "Staff";
         enemyPhoto.src = "assets/enemy-varg-human-rest.jpg";
+        document.body.style.background = "url(assets/background-day.jpg) no-repeat center fixed";
+        document.body.style.backgroundSize = "cover";
     }
     else if (enemyName.value == "Abbath") {
         enemyRace.value = "Orc";
         enemyItem.value = "Sword";
         enemyPhoto.src = "assets/enemy-abbath-orc-rest.jpg";
+        document.body.style.background = "url(assets/background-day.jpg) no-repeat center fixed";
+        document.body.style.backgroundSize = "cover";
     } 
     else if (enemyName.value == "Aerendir") {
         enemyRace.value = "Elf";
         enemyItem.value = "Bow";
         enemyPhoto.src = "assets/enemy-aerendir-elf-rest.jpg";
+        document.body.style.background = "url(assets/background-day.jpg) no-repeat center fixed";
+        document.body.style.backgroundSize = "cover";
     } 
     else if (enemyName.value == "Frost") {
         enemyRace.value = "Vampire";
         enemyItem.value = "Boots";
         enemyPhoto.src = "assets/enemy-frost-vampire-rest.jpg";
+        document.body.style.background = "url(assets/background-night.jpg) no-repeat center fixed";
+        document.body.style.backgroundSize = "cover";
     }
     enemy = new Person(enemyName.value, enemyRace.value, enemyItem.value);
     enemyNameDisplay.innerHTML = "Enemy: " + enemy.name;
