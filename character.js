@@ -235,6 +235,10 @@ attackSoundPlay = (player) => {
         soundArrow.currentTime = 0;
         soundArrow.play();
     }
+    else if (player.name == "Abbath") {
+        soundAxe.currentTime = 0;
+        soundAxe.play();
+    }
     else if (player.name == "Frost") {
         soundKnife.currentTime = 0;
         soundKnife.play();
