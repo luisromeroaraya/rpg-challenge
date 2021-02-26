@@ -2,7 +2,6 @@
 // SHOW HERO MODAL SELECTOR ON LOAD PAGE AND SETS RANDOM ENEMY //
 window.onload = function() { 
     randomEnemy();
-    changeEnemy();
     modalHero.style.display = "block";
 }
 
@@ -14,6 +13,7 @@ heroChoose.addEventListener("click", () => {
 // SET VALUES AFTER CHOOSING HERO //
 fightHero.onclick = function() {
     changeHero();
+    changeEnemy();
     hero.heal("hero", hero.maxHealth);
     enemy.heal("enemy", enemy.maxHealth);
     logtxt = "Just another day at Wacken Open Air.";
@@ -188,17 +188,29 @@ resetTurn = () => {
         heroAttack.disabled = false;
         heroHeal.disabled = false;
         heroYield.disabled = false;
+        heroAttack.style.opacity = 1;
+        heroHeal.style.opacity = 1;
+        heroYield.style.opacity = 1;
         enemyAttack.disabled = true;
         enemyHeal.disabled = true;
         enemyYield.disabled = true;
+        enemyAttack.style.opacity = 0;
+        enemyHeal.style.opacity = 0;
+        enemyYield.style.opacity = 0;
     }
     else {
         heroAttack.disabled = true;
         heroHeal.disabled = true;
         heroYield.disabled = true;
+        heroAttack.style.opacity = 0;
+        heroHeal.style.opacity = 0;
+        heroYield.style.opacity = 0;
         enemyAttack.disabled = false;
         enemyHeal.disabled = false;
         enemyYield.disabled = false;
+        enemyAttack.style.opacity = 1;
+        enemyHeal.style.opacity = 1;
+        enemyYield.style.opacity = 1;
     }
 }
 
@@ -269,6 +281,18 @@ checkVampire = (player) => {
     }
 }
 
+// CHECK ENDGAME //
+checkEndgame = () => {
+    if (hero.currentHealth == 0) {
+        document.body.style.background = "url(assets/background-dead.jpg) no-repeat center fixed";
+        document.body.style.backgroundSize = "cover";
+    }
+    else if (enemy.currentHealth == 0) {
+        document.body.style.background = "url(assets/background-dead.jpg) no-repeat center fixed";
+        document.body.style.backgroundSize = "cover";
+    }
+}
+
 // UPDATE BATTLE LOG //
 updateLog = () => {
     log.innerHTML = logtxt;
@@ -305,6 +329,7 @@ heroAttack.addEventListener("click", () => {
     }
     changeTurn();
     setTimeout(function(){checkVampire(enemy);},1000);
+    checkEndgame();
 });
 
 enemyAttack.addEventListener("click", () => {
@@ -338,6 +363,7 @@ enemyAttack.addEventListener("click", () => {
     }
     changeTurn();
     setTimeout(function(){checkVampire(hero);},1000);
+    checkEndgame();
 });
 
 heroHeal.addEventListener("click", () => {
@@ -348,6 +374,7 @@ heroHeal.addEventListener("click", () => {
     updateLog();
     changeTurn();
     setTimeout(function(){checkVampire(enemy);},1000);
+    checkEndgame();
 });
 
 enemyHeal.addEventListener("click", () => {
@@ -358,6 +385,7 @@ enemyHeal.addEventListener("click", () => {
     updateLog();
     changeTurn();
     setTimeout(function(){checkVampire(hero);},1000);
+    checkEndgame();
 });
 
 heroYield.addEventListener("click", () => {
@@ -365,6 +393,7 @@ heroYield.addEventListener("click", () => {
     updateLog();
     changeTurn();
     setTimeout(function(){checkVampire(enemy);},1000);
+    checkEndgame();
 });
 
 enemyYield.addEventListener("click", () => {
@@ -372,4 +401,5 @@ enemyYield.addEventListener("click", () => {
     updateLog();
     changeTurn();
     setTimeout(function(){checkVampire(hero);},1000);
+    checkEndgame();
 });
