@@ -202,6 +202,40 @@ resetTurn = () => {
     }
 }
 
+// CHECK ELF BONUS //
+checkElf = (player) => {
+    if (player.race == "Elf") {
+        switch(player) {
+            case hero:
+                player.totalDamage = Math.floor(player.totalDamage / 2);
+                enemy.currentHealth = enemy.currentHealth - player.totalDamage;
+                if (enemy.currentHealth < 0) {
+                    player.totalDamage = enemy.currentHealth + player.totalDamage;
+                    enemy.currentHealth = 0;
+                }
+                enemyHP.value = enemy.currentHealth;
+                enemyHPDisplay.innerHTML = "HP: "+ enemyHP.value + "/" + enemyHP.max;
+                logtxt = logtxt + ("<br>" + player.name + " deflects the attack back dealing " + player.totalDamage + " points of damage to " + enemy.name + ".");
+                break;
+            case enemy:
+                player.totalDamage = Math.floor(player.totalDamage / 2);
+                hero.currentHealth = hero.currentHealth - hero.totalDamage;
+                if (enemy.currentHealth < 0) {
+                    hero.totalDamage = hero.currentHealth + player.totalDamage;
+                    hero.currentHealth = 0;
+                }
+                heroHP.value = hero.currentHealth;
+                heroHPDisplay.innerHTML = "HP: "+ heroHP.value + "/" + heroHP.max;
+                logtxt = logtxt + ("<br>" + player.name + " deflects the attack back dealing " + player.totalDamage + " points of damage to " + hero.name + ".");
+                break;
+        }
+        setTimeout(function() { 
+            soundArrow.currentTime = 0;
+            soundArrow.play();
+        }, 500);
+    }
+}
+
 // CHECK VAMPIRE BONUS //
 checkVampire = (player) => {
     if (player.race == "Vampire") {
@@ -248,6 +282,7 @@ heroAttack.addEventListener("click", () => {
         logtxt = logtxt + ("<br>" + hero.name + " attacks " + enemy.name + " but he dodges the attack.");
         soundDodge.currentTime = 0;
         soundDodge.play();
+        checkElf(enemy);
     }
     else {
         logtxt = logtxt + ("<br>" + hero.name + " attacks " + enemy.name + " dealing " + hero.totalDamage + " points of damage.");
@@ -260,6 +295,7 @@ heroAttack.addEventListener("click", () => {
             logtxt = logtxt + ("<br>" + hero.name + " attacks " + enemy.name + " again, but he dodges the attack.");
             soundDodge.currentTime = 0;
             soundDodge.play();
+            checkElf(enemy);
         }
         else {
             logtxt = logtxt + ("<br>" + hero.name + " attacks " + enemy.name + " again, dealing "+ hero.totalDamage + " points of damage.");
@@ -278,6 +314,7 @@ enemyAttack.addEventListener("click", () => {
         logtxt = logtxt + ("<br>" + enemy.name + " attacks " + hero.name  + " but he dodges the attack.");
         soundDodge.currentTime = 0;
         soundDodge.play();
+        checkElf(hero);
     }
     else {
         logtxt = logtxt + ("<br>" + enemy.name + " attacks " + hero.name  + " dealing "+ enemy.totalDamage + " points of damage.");
@@ -291,6 +328,7 @@ enemyAttack.addEventListener("click", () => {
             logtxt = logtxt + ("<br>" + enemy.name + " attacks " + hero.name  + " again, but he dodges the attack.");
             soundDodge.currentTime = 0;
             soundDodge.play();
+            checkElf(hero);
         }
         else {
             logtxt = logtxt + ("<br>" + enemy.name + " attacks " + hero.name  + " again, dealing "+ enemy.totalDamage + " points of damage.");

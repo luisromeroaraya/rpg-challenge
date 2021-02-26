@@ -34,22 +34,27 @@ function Person(name, race, item) {
 
     this.totalDamage = this.damage();
 
-    this.attack = function(enemyID, enemy) {
+    this.attack = function(playerID, player) {
         this.totalDamage = this.damage();
-        if (enemy.race == "Human") {
+        if (player.race == "Human") {
             this.totalDamage = Math.floor(this.totalDamage * 0.8);
         }
-        if (enemy.item == "Boots" && success()) {
+        if (player.race == "Elf" && success()) {
+            if (player == hero) { hero.totalDamage = this.totalDamage; }
+            else if (player == enemy) { enemy.totalDamage = this.totalDamage; }
             this.totalDamage = 0;
         }
-        enemy.currentHealth = enemy.currentHealth - this.totalDamage;
-        if (enemy.currentHealth < 0) {
-            this.totalDamage = enemy.currentHealth + this.totalDamage ;
-            enemy.currentHealth = 0;
+        if (player.item == "Boots" && success()) {
+            this.totalDamage = 0;
         }
-        var HPbar = document.getElementById(enemyID + "HP");
-        var HPbarDisplay = document.getElementById(enemyID + "HPDisplay")
-        HPbar.value = enemy.currentHealth;
+        player.currentHealth = player.currentHealth - this.totalDamage;
+        if (player.currentHealth < 0) {
+            this.totalDamage = player.currentHealth + this.totalDamage ;
+            player.currentHealth = 0;
+        }
+        var HPbar = document.getElementById(playerID + "HP");
+        var HPbarDisplay = document.getElementById(playerID + "HPDisplay")
+        HPbar.value = player.currentHealth;
         HPbarDisplay.innerHTML = "HP: "+ HPbar.value + "/" + HPbar.max;
     }
 
