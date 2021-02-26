@@ -202,6 +202,39 @@ resetTurn = () => {
     }
 }
 
+// CHECK VAMPIRE BONUS //
+checkVampire = (player) => {
+    if (player.race == "Vampire") {
+        switch(player) {
+            case hero:
+                player.heal("hero", 10);
+                enemy.currentHealth = enemy.currentHealth - player.healPoints;
+                if (enemy.currentHealth < 0) {
+                    player.HealPoints = enemy.currentHealth + player.healPoints;
+                enemy.currentHealth = 0;
+                }
+                enemyHP.value = enemy.currentHealth;
+                enemyHPDisplay.innerHTML = "HP: "+ enemyHP.value + "/" + enemyHP.max;
+                logtxt = logtxt + ("<br>" + player.name + " sucks " + player.healPoints + " points of health from " + enemy.name + ".");
+            break;
+            case enemy:
+                player.heal("enemy", 10);
+                hero.currentHealth = hero.currentHealth - player.healPoints;
+                if (hero.currentHealth < 0) {
+                    player.HealPoints = enemy.currentHealth + player.healPoints;
+                hero.currentHealth = 0;
+                }
+                heroHP.value = hero.currentHealth;
+                heroHPDisplay.innerHTML = "HP: "+ heroHP.value + "/" + heroHP.max;
+                logtxt = logtxt + ("<br>" + player.name + " sucks " + player.healPoints + " points of health from " + hero.name + ".");
+            break;
+        }
+        updateLog();
+        soundVampire.currentTime = 0;
+        soundVampire.play();
+    }
+}
+
 // UPDATE BATTLE LOG //
 updateLog = () => {
     log.innerHTML = logtxt;
@@ -235,6 +268,7 @@ heroAttack.addEventListener("click", () => {
         updateLog();
     }
     changeTurn();
+    setTimeout(function(){checkVampire(enemy);},1000);
 });
 
 enemyAttack.addEventListener("click", () => {
@@ -265,6 +299,7 @@ enemyAttack.addEventListener("click", () => {
         updateLog();
     }
     changeTurn();
+    setTimeout(function(){checkVampire(hero);},1000);
 });
 
 heroHeal.addEventListener("click", () => {
@@ -274,6 +309,7 @@ heroHeal.addEventListener("click", () => {
     logtxt = logtxt + ("<br>" + hero.name + " heals himself " + hero.healPoints + " points.");
     updateLog();
     changeTurn();
+    setTimeout(function(){checkVampire(enemy);},1000);
 });
 
 enemyHeal.addEventListener("click", () => {
@@ -283,16 +319,19 @@ enemyHeal.addEventListener("click", () => {
     logtxt = logtxt + ("<br>" + enemy.name + " heals himself " + enemy.healPoints + " points.");
     updateLog();
     changeTurn();
+    setTimeout(function(){checkVampire(hero);},1000);
 });
 
 heroYield.addEventListener("click", () => {
     logtxt = logtxt + ("<br>" + hero.name + " surrenders.");
     updateLog();
     changeTurn();
+    setTimeout(function(){checkVampire(enemy);},1000);
 });
 
 enemyYield.addEventListener("click", () => {
     logtxt = logtxt + ("<br>" + enemy.name + " surrenders.");
     updateLog();
     changeTurn();
+    setTimeout(function(){checkVampire(hero);},1000);
 });

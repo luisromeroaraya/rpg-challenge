@@ -44,6 +44,7 @@ function Person(name, race, item) {
         }
         enemy.currentHealth = enemy.currentHealth - this.totalDamage;
         if (enemy.currentHealth < 0) {
+            this.totalDamage = enemy.currentHealth + this.totalDamage ;
             enemy.currentHealth = 0;
         }
         var HPbar = document.getElementById(enemyID + "HP");
