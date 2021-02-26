@@ -1,5 +1,4 @@
 // MODAL SELECTORS //
-
 // SHOW HERO MODAL SELECTOR ON LOAD PAGE AND SETS RANDOM ENEMY //
 window.onload = function() { 
     randomEnemy();
@@ -22,8 +21,9 @@ fightHero.onclick = function() {
     logtxt = logtxt + ("<br>" + hero.name + " the " + hero.race + " will fight " + enemy.name + " the " + enemy.race + "!");
     updateLog();
     musicHero.volume= 0.2;
-    musicHero.currentTime = 0;
     musicHero.play();
+    turn = true;
+    resetTurn();
     modalHero.style.display = "none";
  }
 
@@ -43,6 +43,8 @@ fightEnemy.onclick = function() {
     updateLog();
     logtxt = logtxt + ("<br>" + hero.name + " the " + hero.race + " will fight " + enemy.name + " the " + enemy.race + "!");
     updateLog();
+    turn = true;
+    resetTurn();
     modalEnemy.style.display = "none";
  }
 
@@ -102,13 +104,6 @@ changeEnemy = () => {
     enemy.displayChar();
 }
 
-// RANDOM FUNCTION OF 30% CHANCE //
-success = () => {
-    const chance = [true, false, false, false, true, false, false, false, false, true];
-    var random = Math.floor(Math.random()*10);
-    return chance[random];
-}
-
 // RANDOMIZE FIRST ENEMY //
 randomEnemy = () => {
     var random = Math.floor(Math.random()*4);
@@ -126,12 +121,6 @@ randomEnemy = () => {
             enemyName.value = "Frost";
             break;
       }
-}
-
-// UPDATE BATTLE LOG //
-updateLog = () => {
-    log.innerHTML = logtxt;
-    logContainer.scrollTop = 9999999;
 }
 
 // CHANGE ENEMY PHOTO WHILE ATTACKING //
@@ -180,6 +169,44 @@ attackSoundPlay = (player) => {
     }
 }
 
+// RANDOM FUNCTION OF 30% CHANCE //
+success = () => {
+    const chance = [true, false, false, false, true, false, false, false, false, true];
+    var random = Math.floor(Math.random()*10);
+    return chance[random];
+}
+
+// CHANGE TURN //
+changeTurn = () => {
+    turn = !turn;
+    resetTurn();
+}
+
+// RESET TURN //
+resetTurn = () => {
+    if (turn) {
+        heroAttack.disabled = false;
+        heroHeal.disabled = false;
+        heroYield.disabled = false;
+        enemyAttack.disabled = true;
+        enemyHeal.disabled = true;
+        enemyYield.disabled = true;
+    }
+    else {
+        heroAttack.disabled = true;
+        heroHeal.disabled = true;
+        heroYield.disabled = true;
+        enemyAttack.disabled = false;
+        enemyHeal.disabled = false;
+        enemyYield.disabled = false;
+    }
+}
+
+// UPDATE BATTLE LOG //
+updateLog = () => {
+    log.innerHTML = logtxt;
+    logContainer.scrollTop = 9999999;
+}
 
 // BATTLE BUTTONS LISTENERS //
 heroAttack.addEventListener("click", () => {
@@ -207,6 +234,7 @@ heroAttack.addEventListener("click", () => {
         }
         updateLog();
     }
+    changeTurn();
 });
 
 enemyAttack.addEventListener("click", () => {
@@ -236,6 +264,7 @@ enemyAttack.addEventListener("click", () => {
         }
         updateLog();
     }
+    changeTurn();
 });
 
 heroHeal.addEventListener("click", () => {
@@ -244,6 +273,7 @@ heroHeal.addEventListener("click", () => {
     soundHeal.play();
     logtxt = logtxt + ("<br>" + hero.name + " heals himself " + hero.healPoints + " points.");
     updateLog();
+    changeTurn();
 });
 
 enemyHeal.addEventListener("click", () => {
@@ -252,14 +282,17 @@ enemyHeal.addEventListener("click", () => {
     soundHeal.play();
     logtxt = logtxt + ("<br>" + enemy.name + " heals himself " + enemy.healPoints + " points.");
     updateLog();
+    changeTurn();
 });
 
 heroYield.addEventListener("click", () => {
     logtxt = logtxt + ("<br>" + hero.name + " surrenders.");
     updateLog();
+    changeTurn();
 });
 
 enemyYield.addEventListener("click", () => {
     logtxt = logtxt + ("<br>" + enemy.name + " surrenders.");
     updateLog();
+    changeTurn();
 });

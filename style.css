@@ -13,6 +13,7 @@ html {
 body {
     height: 100%;
     width: 100%;
+    color: white;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: 10fr 85fr 5fr;
