@@ -46,7 +46,7 @@ fightEnemy.onclick = function() {
     turn = true;
     resetTurn();
     modalEnemy.style.display = "none";
- }
+}
 
 // UPDATE HERO VALUES AFTER CHOOSING HERO //
 changeHero = () => {
