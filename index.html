@@ -20,24 +20,29 @@
                 <h1 class="modal-title">Wacken Open Air Metal Battle</h1>
             </section>
             <section class="modal-body">
+                <section class="enemyWins">
+                    <h2 class="enemyWins">You died!</h2>
+                    <img id=enemyWinsPhoto class="img-fluid enemyWins" src="" alt="Enemy Wins">
+                    <p class="enemyWins">Want to play again?</p>
+                    <br class="enemyWins">
+                </section>
                 <h2>Choose your fighter!</h2>
+                <br>
                 <label for=heroName>Enter your name:</label>
                 <input id=heroName type="text" name="heroName" class="mb-1" required><br>
                 <label for="heroRace">Choose your race:</label>
                 <select id=heroRace name="heroRace" class="mb-1" required>
-                    <option value=""></option>
-                    <option value="Human">Human (20% less damage taken)</option>
-                    <option value="Orc">Orc (40% more max health)</option>
-                    <option value="Elf">Elf (30% chance to deflect the attack back)</option>
-                    <option value="Vampire">Vampire (10% lifesteal at vampire's turn)</option>
+                    <option value="Human" selected>Human (-20% damage taken)</option>
+                    <option value="Orc">Orc (+40% max health)</option>
+                    <option value="Elf">Elf (30% chance deflect attack)</option>
+                    <option value="Vampire">Vampire (10% lifesteal each turn)</option>
                 </select>
                 <br>
                 <label for=heroItem>Choose your special item:</label>
                 <select id=heroItem name="heroItem" class="mb-1" required>
-                    <option value=""></option>
-                    <option value="Boots">Boots (30% chance to dodge an attack)</option>
-                    <option value="Staff">Staff (20% increase in healing)</option>
-                    <option value="Sword">Sword (30% more damage)</option>
+                    <option value="Boots" selected>Boots (30% change to dodge)</option>
+                    <option value="Staff">Staff (+20% healing)</option>
+                    <option value="Sword">Sword (+30% damage)</option>
                     <option value="Bow">Bow (30% chance to attack twice)</option>
                 </select>
             </section>
@@ -53,6 +58,12 @@
                 <h1 class="modal-title">Wacken Open Air Metal Battle</h1>
             </section>
             <section class="modal-body">
+                <section class="heroWins">
+                    <h2 class="heroWins">You won!</h2>
+                    <img id=heroWinsPhoto class="img-fluid heroWins" src="assets/hero-dio-human-wins.gif" alt="Enemy Wins">
+                    <p class="heroWins">Want to play again?</p>
+                    <br class="heroWins">
+                </section>
                 <h2>Change your opponent!</h2>
                 <label for=enemyName>Choose your enemy:</label>
                 <select id=enemyName name="enemyName" onchange="changeEnemy()" required>
@@ -101,7 +112,7 @@
         </section>
     </header>
 
-    <main class="container">     
+    <main class="container-fluid">     
         <article id=battleCharacters class="row justify-content-between">
             <section id=heroCharacter class="col-6">
                 <section id=heroNameContainer class="d-flex justify-content-start align-items-center">
@@ -120,7 +131,7 @@
                 <section id=heroPhotoContainer class="d-flex justify-content-start align-items-center">
                     <img id=heroPhoto class="img-fluid" src="assets/hero-sword-dio.jpg" alt="Hero Photo">
                 </section>
-                <section id=heroButtonsContainer class="d-flex justify-content-center">
+                <section id=heroButtonsContainer class="d-flex justify-content-start align-self-center">
                     <button id=heroAttack type="button" class="btn btn-dark m-1 p-1">Attack</button>
                     <button id=heroHeal type="button" class="btn btn-dark m-1 p-1">Heal</button>
                     <button id=heroYield type="button" class="btn btn-dark m-1 p-1">Yield</button>
@@ -143,14 +154,14 @@
                 <section id=enemyPhotoContainer class="d-flex justify-content-end align-items-center">
                     <img id=enemyPhoto class="img-fluid" src="assets/enemy-abbath-orc-rest.jpg" alt="Enemy Photo">
                 </section>
-                <section id=enemyButtonsContainer class="d-flex justify-content-center align-self-center">
+                <section id=enemyButtonsContainer class="d-flex justify-content-end align-self-center">
                     <button id=enemyAttack type="button" class="btn btn-dark m-1 p-1">Attack</button>
                     <button id=enemyHeal type="button" class="btn btn-dark m-1 p-1">Heal</button>
                     <button id=enemyYield type="button" class="btn btn-dark m-1 p-1">Yield</button>
                 </section>
             </section>
         </article>
-        <article id=battleLog class="container">
+        <article id=battleLog>
             <section id=logTitle>
                 <h2>Battle Log</h2>
             </section>
@@ -174,6 +185,11 @@
     <audio id=soundHeal src="assets/sound-heal.mp3" type="audio/mpeg" preload="auto" style="display: none;"></audio>
     <audio id=soundVampire src="assets/sound-vampire.mp3" type="audio/mpeg" preload="auto" style="display: none;"></audio>
     <audio id=musicHero src="assets/music-hero.mp3" type="audio/mpeg" preload="auto" style="display: none;" loop></audio>
+    <audio id=musicHeroWins src="assets/music-hero-wins.mp3" type="audio/mpeg" preload="auto" style="display: none;"></audio>
+    <audio id=musicVargWins src="assets/music-enemy-varg-wins.mp3" type="audio/mpeg" preload="auto" style="display: none;"></audio>
+    <audio id=musicAbbathWins src="assets/music-enemy-abbath-wins.mp3" type="audio/mpeg" preload="auto" style="display: none;"></audio>
+    <audio id=musicAerendirWins src="assets/music-enemy-aerendir-wins.mp3" type="audio/mpeg" preload="auto" style="display: none;"></audio>
+    <audio id=musicFrostWins src="assets/music-enemy-frost-wins.mp3" type="audio/mpeg" preload="auto" style="display: none;"></audio>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
     <script type="text/javascript" src="character.js"></script>

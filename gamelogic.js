@@ -20,14 +20,19 @@ fightHero.onclick = function() {
     updateLog();
     logtxt = logtxt + ("<br>" + hero.name + " the " + hero.race + " will fight " + enemy.name + " the " + enemy.race + "!");
     updateLog();
+    musicVargWins.pause();
+    musicAbbathWins.pause();
+    musicAerendirWins.pause();
+    musicFrostWins.pause();
     musicHero.volume= 0.2;
     musicHero.play();
     turn = true;
     resetTurn();
+    hideClass("enemyWins");
     modalHero.style.display = "none";
- }
+}
 
- // SHOW ENEMY MODAL SELECTOR ON BUTTON CLICK //
+// SHOW ENEMY MODAL SELECTOR ON BUTTON CLICK //
  enemyChoose.addEventListener("click", () => {
     modalEnemy.style.display = "block";
 });
@@ -43,8 +48,11 @@ fightEnemy.onclick = function() {
     updateLog();
     logtxt = logtxt + ("<br>" + hero.name + " the " + hero.race + " will fight " + enemy.name + " the " + enemy.race + "!");
     updateLog();
+    musicHeroWins.pause();
+    musicHero.play();
     turn = true;
     resetTurn();
+    hideClass("heroWins");
     modalEnemy.style.display = "none";
 }
 
@@ -284,13 +292,63 @@ checkVampire = (player) => {
 // CHECK ENDGAME //
 checkEndgame = () => {
     if (hero.currentHealth == 0) {
-        document.body.style.background = "url(assets/background-dead.jpg) no-repeat center fixed";
-        document.body.style.backgroundSize = "cover";
+        switch (enemy.name) {
+            case "Varg Vikernes":
+                enemyWinsPhoto.src = "assets/enemy-varg-human-wins.gif";
+                musicHero.pause();
+                musicHero.currentTime = 0;
+                musicVargWins.currentTime = 0;
+                musicVargWins.play();
+            break;
+            case "Abbath":
+                enemyWinsPhoto.src = "assets/enemy-abbath-orc-wins.gif";
+                musicHero.pause();
+                musicHero.currentTime = 0;
+                musicAbbathWins.currentTime = 0;
+                musicAbbathWins.play();
+            break;
+            case "Aerendir":
+                enemyWinsPhoto.src = "assets/enemy-aerendir-elf-wins.gif";
+                musicHero.pause();
+                musicHero.currentTime = 0;
+                musicAerendirWins.currentTime = 0;
+                musicAerendirWins.play();
+            break;
+            case "Frost":
+                enemyWinsPhoto.src = "assets/enemy-frost-vampire-wins.gif";
+                musicHero.pause();
+                musicHero.currentTime = 0;
+                musicFrostWins.currentTime = 0;
+                musicFrostWins.play();
+            break;
+        }
+        showClass("enemyWins");
+        modalHero.style.display = "block";
     }
     else if (enemy.currentHealth == 0) {
-        document.body.style.background = "url(assets/background-dead.jpg) no-repeat center fixed";
-        document.body.style.backgroundSize = "cover";
+        musicHero.pause();
+        musicHero.currentTime = 0;
+        musicHeroWins.currentTime = 0;
+        musicHeroWins.play();
+        showClass("heroWins");
+        modalEnemy.style.display = "block";
     }
+}
+
+// HIDE ALL CLASS ELEMENTS //
+hideClass = (classname) => {
+    var array = document.getElementsByClassName(classname);
+        for (var i=0; i<array.length; i++) {
+            array[i].style.display = "none";
+        }
+}
+
+// SHOW ALL CLASS ELEMENTS //
+showClass = (classname) => {
+    var array = document.getElementsByClassName(classname);
+        for (var i=0; i<array.length; i++) {
+            array[i].style.display = "block";
+        }
 }
 
 // UPDATE BATTLE LOG //
@@ -392,7 +450,7 @@ heroYield.addEventListener("click", () => {
     logtxt = logtxt + ("<br>" + hero.name + " surrenders.");
     updateLog();
     changeTurn();
-    setTimeout(function(){checkVampire(enemy);},1000);
+    hero.currentHealth = 0;
     checkEndgame();
 });
 
@@ -400,6 +458,6 @@ enemyYield.addEventListener("click", () => {
     logtxt = logtxt + ("<br>" + enemy.name + " surrenders.");
     updateLog();
     changeTurn();
-    setTimeout(function(){checkVampire(hero);},1000);
+    enemy.currentHealth = 0;
     checkEndgame();
 });
