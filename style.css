@@ -122,12 +122,12 @@ footer {
 }  
 
 #battleCharacters {
-    height: calc(72vh - 130px);
+    height: calc(80vh - 130px);
     margin: auto;
 }
 
 #logContainer {
-    height: 23vh;
+    height: 15vh;
     margin: auto;
     background: rgba(255, 255, 255, 0.3);
     overflow-y: scroll;
