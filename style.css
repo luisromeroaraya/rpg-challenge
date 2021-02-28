@@ -57,6 +57,66 @@ main {
     margin: auto;
 }
 
+@media only screen and (max-width: 576px) {
+    h1, h2, h3, h4, h5, p, label, select {
+        font-size: 0.8em;
+    }
+
+    select {
+        width: 100%;
+    }
+
+    .btn {
+        font-size: 0.6em;
+    }
+
+    #heroChoose, #enemyChoose {
+        font-size: 0.5em;
+        padding: 1px;
+    }
+
+    #fightHero, #fightEnemy {
+        font-size: 1em;
+        margin: auto;
+    }
+
+    #headerLogo {
+        height: auto;
+        max-width: 100px;
+    }
+
+    #versusLogo {
+        max-width: 100px;
+        left: calc(50vw - 50px);
+    }
+
+    #heroPhoto, #enemyPhoto, #heroWinsPhoto, #enemyWinsPhoto {
+        max-height: 200px;
+        margin: auto;
+    }
+
+    #heroHPContainer, #enemyHPContainer {
+        white-space: nowrap;
+        margin-bottom: 5px;
+    }
+
+    #battleCharacters {
+        min-height: 50vh;
+    }
+
+    #logContainer {
+        min-height: 30vh;
+    }
+
+    #battleLog {
+        margin-top: 5px;
+    }
+
+    footer {
+        margin-top: 6vh;
+    }
+}  
+
 #battleCharacters {
     height: calc(72vh - 130px);
     margin: auto;
