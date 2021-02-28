@@ -106,7 +106,7 @@ Great! Now proceed.
 
 ### Challenge 1:
 
-- [ ] Create a js file named `gamelogic.js`. You are in charge of writing the game itself. Take a look at the `character.js` file you will have to use it.
+- [x] Create a js file named `gamelogic.js`. You are in charge of writing the game itself. Take a look at the `character.js` file you will have to use it.
 
 **Note:** You will have to work with this file as well. Its up to you to find out what belongs where.
 
@@ -120,7 +120,7 @@ Great! Now proceed.
 
 ### Challenge 4:
 
-- [ ] Write a function that will handle the items. This will be called everytime we make a move.
+- [x] Write a function that will handle the items. This will be called everytime we make a move.
 
 #### Challenge 5:
 
@@ -146,13 +146,13 @@ Here is a list of what you should work out:
 - [x] Combine the code + html for some 'working result'.
 - [x] Inputs should generate the characters stats.
 - [x] Work out the attack function (Almost the same as heal but it has to hit the enemy).
-- [ ] When a player loses, display a victory message & a loose message for each player.
-- [ ] At the end of the game, you should be able to restart the game to create a new character.
+- [x] When a player loses, display a victory message & a loose message for each player.
+- [x] At the end of the game, you should be able to restart the game to create a new character.
  
 ## The final encounter
 - [x] Style this arena to your taste.
-- [ ] Add extra functions. (Keep it appropriate.)
-- [ ] Prepare to present your work.
+- [x] Add extra functions. (Keep it appropriate.)
+- [x] Prepare to present your work.
 
 <details>
 <summary>Well done! Now challenge people!</summary>
@@ -161,7 +161,7 @@ Here is a list of what you should work out:
 
 ## Goals
 - [x] Understand DOM manipulation.
-- [ ] Understand forms input.
+- [x] Understand forms input.
 - [ ] Understand JSON.
 - [x] Understand basic javascript.
  Have extra fun!
