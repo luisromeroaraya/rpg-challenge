@@ -16,10 +16,14 @@ html {
 }
 
 body {
+    height: 100vh;
     max-width: 800px;
     margin: auto;
 }
 
+main {
+    height: calc(100vh - 130px);
+}
 .btn:hover, .btn:focus {
     background: green;
     text-decoration: none;
@@ -53,9 +57,16 @@ body {
     margin: auto;
 }
 
+#battleCharacters {
+    height: calc(72vh - 130px);
+    margin: auto;
+}
+
 #logContainer {
+    height: 23vh;
+    margin: auto;
     background: rgba(255, 255, 255, 0.3);
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 
 /* MODAL BACKGROUND */
