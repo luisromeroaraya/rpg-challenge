@@ -90,8 +90,13 @@ main {
         left: calc(50vw - 50px);
     }
 
-    #heroPhoto, #enemyPhoto, #heroWinsPhoto, #enemyWinsPhoto {
+    #heroPhoto, #enemyPhoto {
         max-height: 200px;
+        margin: auto;
+    }
+
+    #heroWinsPhoto, #enemyWinsPhoto {
+        max-height: 150px;
         margin: auto;
     }
 
