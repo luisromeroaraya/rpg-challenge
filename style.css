@@ -11,15 +11,15 @@ h1, h2, h3, h4, h5, p, label, button {
 }
 
 h1 {
-    font-size: 5vh;
+    font-size: 3.5vh;
 }
 
 h2 {
-    font-size: 4vh;
+    font-size: 3vh;
 }
 
 h3 {
-    font-size: 3vh;
+    font-size: 2.5vh;
 }
 
 html {
@@ -67,6 +67,10 @@ body {
         max-width: 100px;
         left: calc(50vw - 50px);
     }
+
+    select {
+        width: 100%;
+    }
 }  
 
 #heroPhoto, #enemyPhoto {
@@ -78,7 +82,7 @@ body {
 }
 
 #heroWinsPhoto, #enemyWinsPhoto {
-    max-height: 300px;
+    max-height: 30vh;
     margin: auto;
 }
 
