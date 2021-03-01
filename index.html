@@ -100,20 +100,20 @@
     
     <header class="container-fluid">
         <section class="row d-flex justify-content-center align-items-center">
-            <section class="col-4 d-flex justify-content-start align-self-center">
+            <section class="col-4 d-flex justify-content-start justify-self-start align-self-center">
                 <button id=heroChoose type="button" class="btn btn-dark">Change your Hero</button>
             </section>
             <section class="col-4 d-flex justify-content-center align-self-center">
                 <img id=headerLogo src="assets/logo.png" alt="Logo">
             </section>
-            <section class="col-4 d-flex justify-content-end align-self-center">
+            <section class="col-4 d-flex justify-content-end justify-self-end align-self-center">
                 <button id=enemyChoose type="button" class="btn btn-dark">Change your Enemy</button>
             </section>
         </section>
     </header>
 
     <main class="container-fluid">     
-        <article id=battleCharacters class="row justify-content-between">
+        <article id=battleCharacters class="row">
             <section id=heroCharacter class="col-6">
                 <section id=heroNameContainer class="d-flex justify-content-start align-items-center">
                     <h3 id=heroNameDisplay>Your name</h3>
@@ -163,9 +163,9 @@
         </article>
         <article id=battleLog>
             <section id=logTitle>
-                <h2>Battle Log</h2>
+                <h3>Battle Log</h3>
             </section>
-            <section id=logContainer class="p-1">
+            <section id=logContainer class="bg-secondary p-1">
                 <p id=log>Just another day at Wacken Open Air.</p>
             </section>
         </article>
