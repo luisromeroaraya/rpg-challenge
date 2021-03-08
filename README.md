@@ -162,6 +162,6 @@ Here is a list of what you should work out:
 ## Goals
 - [x] Understand DOM manipulation.
 - [x] Understand forms input.
-- [ ] Understand JSON.
+- [x] Understand JSON.
 - [x] Understand basic javascript.
  Have extra fun!
